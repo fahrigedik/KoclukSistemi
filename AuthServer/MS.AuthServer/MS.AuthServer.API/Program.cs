@@ -14,7 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //DI Register
+
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOptions"));
+builder.Services.Configure<List<Client>>(builder.Configuration.GetSection("Clients"));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

@@ -79,4 +79,43 @@ public class TokenService : ITokenService
         };
         return tokenDto;
     }
+
+
+
+    private IEnumerable<Claim> GetClaimsByClient(Client client)
+    {
+        var claims = new List<Claim>();
+        claims.AddRange(client.Audiences.Select(x => new Claim(JwtRegisteredClaimNames.Aud, x)));
+        claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+        claims.Add(new Claim(JwtRegisteredClaimNames.Sub, client.ClientId));
+        return claims;
+    }
+
+    public ClientTokenDto CreateClientToken(Client client)
+    {
+        var accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+        var securityKey = SignInService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
+
+        SigningCredentials signingCredentials =
+            new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
+
+        JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
+            issuer: _tokenOptions.Issuer,
+            expires: accessTokenExpiration,
+            notBefore: DateTime.Now,
+            claims: GetClaimsByClient(client),
+            signingCredentials: signingCredentials
+        );
+
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.WriteToken(jwtSecurityToken);
+
+        var clientTokenDto = new ClientTokenDto
+        {
+            AccessToken = token,
+            AccessTokenExpiration = accessTokenExpiration
+        };
+
+        return clientTokenDto;
+    }
 }
