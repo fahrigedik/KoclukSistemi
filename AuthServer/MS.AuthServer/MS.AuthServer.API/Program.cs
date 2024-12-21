@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MS.AuthServer.Core.Configuration;
+using MS.AuthServer.Core.Entities;
 using MS.AuthServer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +30,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         sqlOptions.MigrationsAssembly(typeof(DataAssembly).Assembly.FullName);
     });
 });
+
+builder.Services.AddIdentity<AppUser, AppRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 6;
+})
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 var app = builder.Build();
 
