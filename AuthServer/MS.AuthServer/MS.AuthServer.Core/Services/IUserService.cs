@@ -3,8 +3,8 @@
 namespace MS.AuthServer.Core.Services;
 public interface IUserService
 {
-    Task<CreateUserDto> CreateUserAsync(CreateUserDto createUserDto);
+    Task<GenericResponse<CreateUserDto>> CreateUserAsync(CreateUserDto createUserDto);
 
-    Task<AppUserDto> GetUserByNameAsync(string name);
+    Task<GenericResponse<AppUserDto>> GetUserByNameAsync(string name);
 }
 
