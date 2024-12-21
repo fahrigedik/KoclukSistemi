@@ -14,7 +14,6 @@ public class GenericResponse<T> where T : class
     [JsonIgnore]
     public bool IsSuccessfull { get; set; }
 
-
     public static GenericResponse<T> Success(T data, HttpStatusCode statusCode)
     {
         return new GenericResponse<T>()
