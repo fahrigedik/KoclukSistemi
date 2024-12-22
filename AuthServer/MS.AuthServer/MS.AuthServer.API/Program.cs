@@ -1,7 +1,11 @@
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using MS.AuthServer.API.Extensions;
+using MS.AuthServer.API.Validations;
 using MS.AuthServer.Core.Configuration;
 using MS.AuthServer.Core.Entities;
 using MS.AuthServer.Core.Repositories;
@@ -51,6 +55,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     });
 });
 
+builder.Services.UseCustomValidationResponse();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
+
 builder.Services.AddIdentity<AppUser, AppRole>(options =>
 {
     options.User.RequireUniqueEmail = true;
@@ -68,20 +77,23 @@ builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(jwtBearerOptions =>
 {
+    var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<CustomTokenOption>();
     jwtBearerOptions.SaveToken = true;
     jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["TokenOptions:Audience"],
-        ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["TokenOptions:Issuer"],
+        ValidIssuer = tokenOptions.Issuer,
+        ValidAudience = tokenOptions.Audiences[0],
+        IssuerSigningKey = SignInService.GetSymmetricSecurityKey(tokenOptions.SecurityKey),
+
+        //Validation
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = SignInService.GetSymmetricSecurityKey(builder.Configuration["TokenOptions:SecurityKey"]),
+        ValidateAudience = true,
+        ValidateIssuer = true,
         ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero
+        ClockSkew = TimeSpan.Zero // Token'a ömür verildiðinde 1 saatlik ömür verildiðinde +5 dk gelir. çünkü serverlar arasý zaman aralýðýný minimize etmek için.
+
     };
 });
 
@@ -95,6 +107,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomExceptionHandle();
 
 app.UseAuthentication();
 app.UseAuthorization();
