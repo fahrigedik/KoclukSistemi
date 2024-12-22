@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MS.CoachSystem.Repository\MS.CoachSystem.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
