@@ -13,10 +13,12 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
     {
         var user = new AppUser()
         {
+            Id = Guid.NewGuid().ToString(),
             UserName = createUserDto.UserName,
             Email = createUserDto.Email,
             BirthDate = createUserDto.BirthDate,
-            Gender = createUserDto.Gender
+            Gender = createUserDto.Gender,
+            TCKN = createUserDto.TCKN,
         };
 
         var result = await _userManager.CreateAsync(user, createUserDto.Password);

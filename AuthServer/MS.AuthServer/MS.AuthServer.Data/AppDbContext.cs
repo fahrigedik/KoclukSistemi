@@ -5,8 +5,12 @@ using MS.AuthServer.Core.Entities;
 
 namespace MS.AuthServer.Data;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<AppUser, AppRole, string>
-{ 
+public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+
+    }
     public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
