@@ -2,7 +2,7 @@
 
 namespace MS.CoachSystem.Entity.Entities;
 
-public class Task : BaseEntity, IHasCreationAndModificationDates
+public class UserTask : BaseEntity, IHasCreationAndModificationDates
 {
     public string StudentID { get; set; } // AuthServer'daki Users tablosuna foreign key
     public string CoachID { get; set; } // AuthServer'daki Users tablosuna foreign key

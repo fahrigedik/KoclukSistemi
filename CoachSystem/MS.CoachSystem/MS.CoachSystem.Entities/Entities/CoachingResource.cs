@@ -9,7 +9,7 @@ public class CoachingResource : BaseEntity, IHasCreationAndModificationDates
     public string Description { get; set; }
     public int ResourceType { get; set; }
     public string URL { get; set; }
-    public bool IsActive { get; set; }
+            public bool IsActive { get; set; }
     public DateTime CreationDate { get; set; }
     public DateTime ModificationDate { get; set; }
 
