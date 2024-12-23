@@ -3,6 +3,6 @@
 public interface IHasCreationAndModificationDates
 {
     DateTime CreationDate { get; set; }
-    DateTime ModificationDate { get; set; }
+    DateTime? ModificationDate { get; set; }
 }
 

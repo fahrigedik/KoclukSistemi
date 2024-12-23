@@ -12,5 +12,5 @@ public class CoachingSession : BaseEntity, IHasCreationAndModificationDates
     public string SessionTopic { get; set; } // Opsiyonel
     public string SessionNotes { get; set; } // Opsiyonel
     public DateTime CreationDate { get; set; }
-    public DateTime ModificationDate { get; set; }
+    public DateTime? ModificationDate { get; set; }
 }
