@@ -32,4 +32,13 @@ public class UserController : CustomBaseController
     }
 
 
+    [HttpPost]
+    public async Task<IActionResult> CreateCoachUser(CreateUserDto createUserDto)
+    {
+
+        var result = await _userService.CreateCoachUserAsync(createUserDto);
+        return ActionResultInstance(result);
+    }
+
+
 }

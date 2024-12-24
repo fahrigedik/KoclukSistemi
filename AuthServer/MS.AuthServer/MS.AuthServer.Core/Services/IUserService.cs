@@ -6,5 +6,7 @@ public interface IUserService
     Task<GenericResponse<CreateUserDto>> CreateUserAsync(CreateUserDto createUserDto);
 
     Task<GenericResponse<AppUserDto>> GetUserByNameAsync(string name);
+
+    Task<GenericResponse<CreateUserDto>> CreateCoachUserAsync(CreateUserDto createUserDto);
 }
 

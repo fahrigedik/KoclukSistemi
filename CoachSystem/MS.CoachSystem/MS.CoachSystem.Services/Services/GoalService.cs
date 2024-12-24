@@ -1,5 +1,8 @@
-﻿using MS.CoachSystem.Core.DTOs;
+﻿using AutoMapper;
+using MS.CoachSystem.Core.DTOs;
+using MS.CoachSystem.Core.Repositories;
 using MS.CoachSystem.Core.Services;
+using MS.CoachSystem.Core.UnitOfWork;
 using MS.CoachSystem.Entity.Entities;
 
 namespace MS.CoachSystem.Service.Services;

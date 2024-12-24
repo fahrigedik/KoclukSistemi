@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using MS.CoachSystem.Web.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MS.CoachSystem.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,6 +17,15 @@ namespace MS.CoachSystem.Web.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return Unauthorized();
+            }
+
             return View();
         }
 

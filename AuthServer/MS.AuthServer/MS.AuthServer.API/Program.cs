@@ -110,6 +110,7 @@ app.UseHttpsRedirection();
 
 app.UseCustomExceptionHandle();
 
+
 app.UseAuthentication();
 app.UseAuthorization();
 
