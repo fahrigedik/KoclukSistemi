@@ -24,17 +24,16 @@ namespace MS.CoachSystem.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginDto loginDto)
+        public async Task<IActionResult> Login(LoginViewModel loginDto)
         {
             if (!ModelState.IsValid)
             {
                 return View(loginDto);
             }
-            var tokenResponse = await _authService.LoginAsync(loginDto);
+            var tokenResponse = await _authService.LoginAsync(new LoginDto(){Email = loginDto.Email, Password = loginDto.Password});
 
             if (tokenResponse.IsSuccessfull)
             {
-                // Token'ı saklayın ve yönlendirme yapın
                 HttpContext.Response.Cookies.Append("AccessToken", tokenResponse.Data.AccessToken, new CookieOptions
                 {
                     HttpOnly = true,
@@ -43,9 +42,8 @@ namespace MS.CoachSystem.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError(string.Empty, "Login failed");
+            tokenResponse.Error.Errors.ToList().ForEach(x => ModelState.AddModelError(string.Empty, x));
             return View(loginDto);
-
         }
 
         [Authorize(Roles = "coach")]

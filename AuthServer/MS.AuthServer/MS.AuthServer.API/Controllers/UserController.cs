@@ -40,5 +40,19 @@ public class UserController : CustomBaseController
         return ActionResultInstance(result);
     }
 
+    [Authorize(Roles = "coach")]
+    [HttpPost]
+    public async Task<IActionResult> GetUsersByIds(List<string> userIds)
+    {
+        var result = await _userService.GetUsersByIdsAsync(userIds);
+        return ActionResultInstance(result);
+    }
 
+    [Authorize(Roles = "coach")]
+    [HttpPost]
+    public async Task<IActionResult> CreateStudentUser(CreateUserDto createUserDto)
+    {
+        var result = await _userService.CreateStudentUserAsync(createUserDto);
+        return ActionResultInstance(result);
+    }
 }

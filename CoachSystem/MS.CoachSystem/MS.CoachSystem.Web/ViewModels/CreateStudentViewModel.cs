@@ -1,8 +1,7 @@
-﻿using MS.AuthServer.Core.Enum;
+﻿using MS.CoachSystem.Core.Enum;
 
-namespace MS.AuthServer.Core.DTOs;
-
-public class CreateUserDto
+namespace MS.CoachSystem.Web.ViewModels;
+public class CreateStudentViewModel
 {
     public string UserName { get; set; }
     public string Email { get; set; }
@@ -14,4 +13,3 @@ public class CreateUserDto
     public string TCKN { get; set; }
     public Gender Gender { get; set; }
 }
-

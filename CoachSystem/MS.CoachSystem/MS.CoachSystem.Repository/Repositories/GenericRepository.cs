@@ -5,8 +5,8 @@ using MS.CoachSystem.Core.Repositories;
 namespace MS.CoachSystem.Repository.Repositories;
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    private readonly AppDbContext context;
-    private readonly DbSet<T> dbSet;
+    private readonly AppDbContext context; 
+    protected readonly DbSet<T> dbSet;
     public GenericRepository(AppDbContext _context)
     {
         context = _context;
