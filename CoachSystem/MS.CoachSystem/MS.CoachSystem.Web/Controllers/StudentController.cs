@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MS.CoachSystem.Core.DTOs;
 using MS.CoachSystem.Service.Services;
@@ -9,9 +10,16 @@ namespace MS.CoachSystem.Web.Controllers
     public class StudentController : Controller
     {
         private readonly AuthService _authService;
-        public StudentController(AuthService authService)
+        private readonly StudentService _studentService;
+        private readonly CoachStudentService _coachStudentService;
+        public StudentController(
+            AuthService authService, 
+            StudentService studentService,
+            CoachStudentService coachStudentService)
         {
             _authService = authService;
+            _studentService = studentService;
+            _coachStudentService = coachStudentService;
         }
 
         public IActionResult Index()
@@ -31,7 +39,7 @@ namespace MS.CoachSystem.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateStudentViewModel createStudentViewModel)
         {
-            var result = await _authService.CreateStudentUserAsync(new CreateUserDto()
+            var result = await _studentService.CreateStudentUserAsync(new CreateUserDto()
             {
                 BirthDate = createStudentViewModel.BirthDate,
                 City = createStudentViewModel.City,
@@ -46,6 +54,11 @@ namespace MS.CoachSystem.Web.Controllers
 
             if (result.IsSuccessfull)
             {
+                _coachStudentService.AddAsync(new CoachStudentDto()
+                {
+                    CoachId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value,
+                    StudentId = result.Data.Id
+                });
                 return RedirectToAction("Index", "Home");
             }
 

@@ -2,9 +2,14 @@
 using Microsoft.IdentityModel.Tokens;
 using MS.CoachSystem.Core.Configuration;
 using System.Text;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using MS.CoachSystem.Service.Services;
 using MS.CoachSystem.Web.Controllers;
 using Microsoft.Extensions.Options;
+using MS.CoachSystem.Service.AutoMapper;
+using MS.CoachSystem.Repository;
+using MS.CoachSystem.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,7 +67,13 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-
+builder.Services.AddAutoMapper(typeof(MapProfile));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterModule(new ServiceModule());
+    containerBuilder.RegisterModule(new RepositoryModule());
+});
 
 var app = builder.Build();
 

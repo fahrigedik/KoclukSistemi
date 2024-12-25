@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using MS.CoachSystem.Core.DTOs;
+using MS.CoachSystem.Core.Helpers;
 
 
 namespace MS.CoachSystem.Service.Services;
@@ -19,15 +20,6 @@ public class AuthService
         _httpClient = httpClient;
         _httpContextAccessor = httpContextAccessor;
         _configuration = configuration;
-    }
-
-    public void AddAuthorizationHeader()
-    {
-        var accessToken = _httpContextAccessor.HttpContext.Request.Cookies["AccessToken"];
-        if (!string.IsNullOrEmpty(accessToken))
-        {
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        }
     }
     public async Task<GenericResponse<TokenDto>> LoginAsync(LoginDto loginDto)
     {
@@ -47,31 +39,7 @@ public class AuthService
         return tokenResponse;
     }
 
-    public async Task<GenericResponse<AppUserDto>> GetUsersByIdsAsync(List<string> userIds)
-    {
-        var response = await _httpClient.PostAsJsonAsync("api/auth/GetUsersByIds", userIds);
-        var userResponse = await response.Content.ReadFromJsonAsync<GenericResponse<AppUserDto>>();
-        if (response.IsSuccessStatusCode)
-        {
-            userResponse.IsSuccessfull = true;
-            return userResponse;
-        }
-        else
-        {
-            userResponse.IsSuccessfull = false;
-            userResponse = GenericResponse<AppUserDto>.Fail(new ErrorDto(userResponse.Error.Errors, true), HttpStatusCode.NotFound);
-        }
-        return userResponse;
-    }
-
-    public async Task<GenericResponse<CreateStudentUserResponseDto>> CreateStudentUserAsync(CreateUserDto createUserDto)
-    {
-        AddAuthorizationHeader();
-        var response = await _httpClient.PostAsJsonAsync("api/user/createstudentuser", createUserDto);
-
-        var result = await response.Content.ReadFromJsonAsync<GenericResponse<CreateStudentUserResponseDto>>();
-        return result;
-    }
+   
 
 
 }
