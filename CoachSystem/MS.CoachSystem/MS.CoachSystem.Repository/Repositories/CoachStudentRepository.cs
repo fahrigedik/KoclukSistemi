@@ -13,4 +13,10 @@ public class CoachStudentRepository : GenericRepository<CoachStudent>, ICoachStu
         context = _context;
         dbSet = context.Set<CoachStudent>();
     }
+
+    public async Task<List<string>> GetStudentIdsByCoachIdAsync(string coachId)
+    {
+        var studentIds = await dbSet.Where(x => x.CoachId == coachId).Select(x => x.StudentId).ToListAsync();
+        return studentIds;
+    }
 }

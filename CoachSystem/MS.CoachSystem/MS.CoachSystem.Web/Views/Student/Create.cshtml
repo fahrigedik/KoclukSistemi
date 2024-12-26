@@ -8,47 +8,47 @@
 
 <form asp-action="Create" method="post">
     <div class="form-group">
-        <label asp-for="UserName"></label>
+        <label asp-for="UserName">Kullanıcı Adı</label>
         <input asp-for="UserName" class="form-control" />
         <span asp-validation-for="UserName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Email"></label>
+        <label asp-for="Email">Email</label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Name"></label>
+        <label asp-for="Name">İsim</label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Surname"></label>
+        <label asp-for="Surname">Soyisim</label>
         <input asp-for="Surname" class="form-control" />
         <span asp-validation-for="Surname" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Password"></label>
+        <label asp-for="Password">Şifre</label>
         <input asp-for="Password" type="password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="City"></label>
+        <label asp-for="City">Şehir</label>
         <input asp-for="City" class="form-control" />
         <span asp-validation-for="City" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="BirthDate"></label>
+        <label asp-for="BirthDate">Doğum Tarihi</label>
         <input asp-for="BirthDate" type="date" class="form-control" />
         <span asp-validation-for="BirthDate" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="TCKN"></label>
+        <label asp-for="TCKN">TC No</label>
         <input asp-for="TCKN" class="form-control" />
         <span asp-validation-for="TCKN" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Gender"></label>
+        <label asp-for="Gender">Cinsiyet</label>
         <select asp-for="Gender" class="form-control">
             <option value="Male">Erkek</option>
             <option value="Female">Kadın</option>
@@ -56,5 +56,5 @@
         </select>
         <span asp-validation-for="Gender" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Oluştur</button>
+    <button type="submit" class="btn btn-primary mt-3">Oluştur</button>
 </form>

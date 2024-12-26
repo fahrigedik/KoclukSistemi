@@ -84,7 +84,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
 
     }
 
-    public async Task<GenericResponse<List<AppUserDto>>> GetUsersByIdsAsync(List<string> userIds)
+    public async Task<GenericResponse<List<StudentUserResponseDto>>> GetUsersByIdsAsync(List<string> userIds)
     {
         var users = await _userManager.Users
             .Where(u => userIds.Contains(u.Id))
@@ -92,11 +92,12 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
 
         if (users == null || users.Count == 0)
         {
-            return GenericResponse<List<AppUserDto>>.Fail("Users not found", HttpStatusCode.NotFound, true);
+            return GenericResponse<List<StudentUserResponseDto>>.Fail("Users not found", HttpStatusCode.NotFound, true);
         }
 
-        var userDtos = users.Select(user => new AppUserDto
+        var userDtos = users.Select(user => new StudentUserResponseDto()
         {
+            Id = user.Id,
             UserName = user.UserName,
             Name = user.Name,
             Surname = user.Surname,
@@ -104,7 +105,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
             PhoneNumber = user.PhoneNumber
         }).ToList();
 
-        return GenericResponse<List<AppUserDto>>.Success(userDtos, HttpStatusCode.OK);
+        return GenericResponse<List<StudentUserResponseDto>>.Success(userDtos, HttpStatusCode.OK);
 
     }
 
@@ -148,8 +149,21 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
             TCKN = user.TCKN,
             Gender = user.Gender ?? Gender.Other
         };
+        var response = GenericResponse<CreateStudentUserResponseDto>.Success(responseDto, HttpStatusCode.OK);
+        response.IsSuccessfull = true;
 
-        return GenericResponse<CreateStudentUserResponseDto>.Success(responseDto, HttpStatusCode.OK);
+        return response;
+    }
+
+    public async Task<GenericResponse<string>> RemoveStudentUserAsync(string userId)
+        {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return GenericResponse<string>.Fail("User not found", HttpStatusCode.NotFound, true);
+        }
+        _userManager.DeleteAsync(user);
+        return GenericResponse<string>.Success("User deleted", HttpStatusCode.OK);
     }
 }
 

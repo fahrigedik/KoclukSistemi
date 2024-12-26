@@ -22,7 +22,7 @@ public class GenericResponse<T> where T : class
             StatusCode = statusCode,
             IsSuccessfull = true
         };
-    }
+    }   
 
     public static GenericResponse<T> Success(HttpStatusCode statusCode)
     {

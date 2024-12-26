@@ -22,5 +22,6 @@ public class ServiceModule : Module
         builder.RegisterType<UserTaskService>().As<IUserTaskService>().InstancePerLifetimeScope();
 
         builder.RegisterType<StudentService>().InstancePerLifetimeScope();
+        builder.RegisterType<AuthService>().InstancePerLifetimeScope();
     }
 }

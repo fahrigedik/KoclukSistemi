@@ -3,30 +3,49 @@
 *@
 @{
 }
+@model List<MS.CoachSystem.Core.DTOs.StudentUserResponseDto>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Surname</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row"></th>
-            <td>Fahri</td>
-            <td>Gedik</td>
-            <td>fahrican9978@gmail.com</td>
-            <td>+90 537 270 41 28</td>
-            <td>
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
-            </td>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Students</h2>
+    <a class="btn btn-success" asp-action="Create">Yeni Öğrenci Ekle</a>
+</div>
 
-        </tr>
-    </tbody>
-</table>
+
+@if (Model is null)
+{
+    <div class="alert alert-info" role="alert">
+        Henüz öğrenci eklenmemiştir.
+    </div>
+
+}
+else
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row"></th>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>
+                        <a href="#" class="btn btn-primary"  >Edit</a>
+                        <a class="btn btn-danger" asp-action="DeleteStudent" asp-route-studentId="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

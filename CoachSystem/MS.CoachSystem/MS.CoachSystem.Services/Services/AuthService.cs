@@ -20,6 +20,7 @@ public class AuthService
         _httpClient = httpClient;
         _httpContextAccessor = httpContextAccessor;
         _configuration = configuration;
+        _httpClient.BaseAddress = new Uri("https://localhost:7076/");
     }
     public async Task<GenericResponse<TokenDto>> LoginAsync(LoginDto loginDto)
     {

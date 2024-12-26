@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MS.CoachSystem.Core.Repositories;
 using MS.CoachSystem.Core.Services;
 using MS.CoachSystem.Core.UnitOfWork;
@@ -9,6 +11,17 @@ public class RepositoryModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+
+        builder.Register(c =>
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("SqlCon"));
+            return new AppDbContext(optionsBuilder.Options);
+        }).AsSelf().InstancePerLifetimeScope();
         builder.RegisterGeneric(typeof(GenericRepository<>)).As(typeof(IGenericRepository<>)).InstancePerLifetimeScope();
         builder.RegisterType<CoachingSessionRepository>().As<ICoachingSessionRepository>().InstancePerLifetimeScope();
         builder.RegisterType<GoalRepository>().As<IGoalRepository>().InstancePerLifetimeScope();

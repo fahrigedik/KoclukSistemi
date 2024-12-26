@@ -1,7 +1,9 @@
 ﻿using System.Security.Claims;
+using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MS.CoachSystem.Core.DTOs;
+using MS.CoachSystem.Core.Services;
 using MS.CoachSystem.Service.Services;
 using MS.CoachSystem.Web.ViewModels;
 
@@ -11,20 +13,24 @@ namespace MS.CoachSystem.Web.Controllers
     {
         private readonly AuthService _authService;
         private readonly StudentService _studentService;
-        private readonly CoachStudentService _coachStudentService;
+        private readonly ICoachStudentService _coachStudentService;
         public StudentController(
-            AuthService authService, 
+            AuthService authService,
             StudentService studentService,
-            CoachStudentService coachStudentService)
+            ICoachStudentService coachStudentService)
         {
             _authService = authService;
             _studentService = studentService;
             _coachStudentService = coachStudentService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var studentIds = await _coachStudentService.GetStudentIdsByCoachIdAsync(HttpContext.User.Claims
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
+            var students = await _studentService.GetStudentsByIdsAsync(studentIds.Data);
+
+            return View(students.Data);
         }
 
 
@@ -52,18 +58,35 @@ namespace MS.CoachSystem.Web.Controllers
                 UserName = createStudentViewModel.UserName
             });
 
-            if (result.IsSuccessfull)
+            if (result.Error is null)
             {
-                _coachStudentService.AddAsync(new CoachStudentDto()
+                await _coachStudentService.AddAsync(new CoachStudentDto()
                 {
                     CoachId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value,
                     StudentId = result.Data.Id
                 });
-                return RedirectToAction("Index", "Home");
             }
+
+            return RedirectToAction("Index", "Home");
+
 
             ModelState.AddModelError(string.Empty, "Kullanıcı oluşturulamadı.");
             return View(createStudentViewModel);
+        }
+
+        [Authorize(Roles = "coach")]
+        public async Task<IActionResult> DeleteStudent(string studentId)
+        {
+            var result = await _studentService.RemoveStudentUserAsync(studentId);
+            if (result.Error is null)
+            {
+                var coachStudentid = await _coachStudentService.GetEntityIdByCoachIdAndStudentId(
+                    HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value,
+                    studentId);
+
+                await _coachStudentService.DeleteAsync(int.Parse(coachStudentid.Data));
+            }
+            return RedirectToAction("Index", "Student");
         }
     }
 }

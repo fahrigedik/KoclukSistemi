@@ -9,8 +9,10 @@ public interface IUserService
 
     Task<GenericResponse<CreateUserDto>> CreateCoachUserAsync(CreateUserDto createUserDto);
 
-    Task<GenericResponse<List<AppUserDto>>> GetUsersByIdsAsync(List<string> userIds);
+    Task<GenericResponse<List<StudentUserResponseDto>>> GetUsersByIdsAsync(List<string> userIds);
 
     Task<GenericResponse<CreateStudentUserResponseDto>> CreateStudentUserAsync(CreateUserDto createUserDto);
+
+    Task<GenericResponse<string>> RemoveStudentUserAsync(string userId);
 }
 

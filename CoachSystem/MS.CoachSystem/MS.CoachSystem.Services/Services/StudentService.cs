@@ -16,12 +16,14 @@ public class StudentService
     {
         _httpClient = httpClient;
         _httpContextAccessor = httpContextAccessor;
+        _httpClient.BaseAddress = new Uri("https://localhost:7076/");
     }
 
-    public async Task<GenericResponse<AppUserDto>> GetStudentsByIdsAsync(List<string> userIds)
+    public async Task<GenericResponse<List<StudentUserResponseDto>>> GetStudentsByIdsAsync(List<string> userIds)
     {
-        var response = await _httpClient.PostAsJsonAsync("api/auth/GetUsersByIds", userIds);
-        var userResponse = await response.Content.ReadFromJsonAsync<GenericResponse<AppUserDto>>();
+        AuthHelper.AddAuthorizationHeader(_httpClient, _httpContextAccessor);
+        var response = await _httpClient.PostAsJsonAsync("api/User/GetUsersByIds", userIds);
+        var userResponse = await response.Content.ReadFromJsonAsync<GenericResponse<List<StudentUserResponseDto>>>();
         if (response.IsSuccessStatusCode)
         {
             userResponse.IsSuccessfull = true;
@@ -30,7 +32,7 @@ public class StudentService
         else
         {
             userResponse.IsSuccessfull = false;
-            userResponse = GenericResponse<AppUserDto>.Fail(new ErrorDto(userResponse.Error.Errors, true), HttpStatusCode.NotFound);
+            userResponse = GenericResponse<List<StudentUserResponseDto>>.Fail(new ErrorDto(userResponse.Error.Errors, true), HttpStatusCode.NotFound);
         }
         return userResponse;
     }
@@ -41,6 +43,18 @@ public class StudentService
         var response = await _httpClient.PostAsJsonAsync("api/user/createstudentuser", createUserDto);
 
         var result = await response.Content.ReadFromJsonAsync<GenericResponse<CreateStudentUserResponseDto>>();
+        return result;
+    }
+
+    public async Task<GenericResponse<string>> RemoveStudentUserAsync(string userId)
+    {
+        AuthHelper.AddAuthorizationHeader(_httpClient, _httpContextAccessor);
+        var response = await _httpClient.PostAsJsonAsync("api/User/RemoveStudentUser", new RemoveStudentDto()
+        {
+            UserId = userId
+        });
+
+        var result = await response.Content.ReadFromJsonAsync<GenericResponse<string>>();
         return result;
     }
 }

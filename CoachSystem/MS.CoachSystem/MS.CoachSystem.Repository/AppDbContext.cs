@@ -17,7 +17,9 @@ public class AppDbContext : DbContext
     public DbSet<GoalType> GoalTypes { get; set; }
     public DbSet<Goal> Goals { get; set; }
     public DbSet<CoachingSession> CoachingSessions { get; set; }
-    public CoachingResource CoachingResources { get; set; } 
+    public DbSet<CoachingResource> CoachingResources { get; set; } 
+    public DbSet<CoachStudent> CoachStudents { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

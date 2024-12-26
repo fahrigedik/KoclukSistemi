@@ -55,4 +55,13 @@ public class UserController : CustomBaseController
         var result = await _userService.CreateStudentUserAsync(createUserDto);
         return ActionResultInstance(result);
     }
+
+
+    [Authorize(Roles = "coach")]
+    [HttpPost]
+    public async Task<IActionResult> RemoveStudentUser(RemoveStudentDto studentDto)
+    {
+        var result = await _userService.RemoveStudentUserAsync(studentDto.UserId);
+        return ActionResultInstance(result);
+    }
 }
