@@ -1,5 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Net;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MS.CoachSystem.Core.DTOs;
+using MS.CoachSystem.Core.DTOs.UserTaskDtos;
 using MS.CoachSystem.Core.Repositories;
 using MS.CoachSystem.Core.Services;
 using MS.CoachSystem.Core.UnitOfWork;
@@ -17,5 +20,15 @@ public class UserTaskService : GenericService<UserTask, UserTaskDto>, IUserTaskS
         repository = _repository;
         mapper = _mapper;
         unitOfWork = _unitOfWork;
+    }
+
+    public async Task<GenericResponse<List<UserTaskDto>>> GetUserTaskByStudentIdAsync(UserTaskRequestDto userTaskRequestDto)
+    {
+        var userTasks = await repository.Where(x =>
+            x.CoachID == userTaskRequestDto.CoachID && x.StudentID == userTaskRequestDto.StudentID).ToListAsync();
+
+        var userTaskDtos = mapper.Map<List<UserTaskDto>>(userTasks);
+
+        return GenericResponse<List<UserTaskDto>>.Success(userTaskDtos, HttpStatusCode.OK);
     }
 }

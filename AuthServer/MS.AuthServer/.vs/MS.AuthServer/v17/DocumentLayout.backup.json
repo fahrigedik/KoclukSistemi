@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|solutionrelative:ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|solutionrelative:ms.authserver.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.core\\dtos\\genericresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|solutionrelative:ms.authserver.core\\dtos\\genericresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|solutionrelative:ms.authserver.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|solutionrelative:ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BC10D4E-04FA-49A7-AE57-D5EDB25C9B12}|MS.AuthServer.API\\MS.AuthServer.API.csproj|solutionrelative:ms.authserver.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.core\\dtos\\createstudentuserresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -114,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -126,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "GenericResponse.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Core\\DTOs\\GenericResponse.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.Core\\DTOs\\GenericResponse.cs",
@@ -134,11 +134,12 @@
               "RelativeToolTip": "MS.AuthServer.Core\\DTOs\\GenericResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T11:56:01.748Z"
+              "WhenOpened": "2024-12-26T11:56:01.748Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.API\\Controllers\\UserController.cs",
@@ -151,20 +152,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.Service\\Services\\UserService.cs",
-              "ToolTip": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\Services\\UserService.cs",
-              "RelativeToolTip": "MS.AuthServer.Service\\Services\\UserService.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAAAJ4AAAAEAAAAAAAAAA==",
+              "ToolTip": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\Services\\UserService.cs*",
+              "RelativeToolTip": "MS.AuthServer.Service\\Services\\UserService.cs*",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAuwJcAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T09:43:45.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.API\\Program.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.API\\Program.cs",
@@ -172,7 +173,8 @@
               "RelativeToolTip": "MS.AuthServer.API\\Program.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T19:19:44.097Z"
+              "WhenOpened": "2024-12-22T19:19:44.097Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

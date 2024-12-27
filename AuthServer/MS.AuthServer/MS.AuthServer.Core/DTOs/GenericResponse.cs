@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json.Serialization;
-
+    
 namespace MS.AuthServer.Core.DTOs;
 
 public class GenericResponse<T> where T : class

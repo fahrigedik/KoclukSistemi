@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
+using System.Net.NetworkInformation;
 
 namespace MS.CoachSystem.Core.Helpers;
+
 public static class AuthHelper
 {
     public static void AddAuthorizationHeader(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
@@ -12,5 +14,6 @@ public static class AuthHelper
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
     }
+
 }
 
