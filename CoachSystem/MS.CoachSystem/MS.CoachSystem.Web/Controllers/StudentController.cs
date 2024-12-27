@@ -93,7 +93,7 @@ namespace MS.CoachSystem.Web.Controllers
         [Authorize(Roles = "coach")]
         public async Task<IActionResult> ManageStudent(string studentId)
         {
-            ViewBag.ManagedStudentId = studentId;
+            HttpContext.Session.SetString("ManagedStudentId", studentId);
             return View();
         }
     }

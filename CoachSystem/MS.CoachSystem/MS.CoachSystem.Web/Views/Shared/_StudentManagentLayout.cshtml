@@ -1,5 +1,4 @@
-﻿@model MS.CoachSystem.Core.DTOs.StudentUserResponseDto
-@using System.Security.Claims
+﻿@using System.Security.Claims
 @inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
@@ -14,14 +13,17 @@
     <link rel="stylesheet" href="~/MS.CoachSystem.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
-    @{
-        var coachId = HttpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    }
     <div class="container-fluid">
         <div class="row">
             <partial name="../Partial/_SidebarPartial.cshtml"></partial>
             <main role="main" class="col main">
-                @await Component.InvokeAsync("StudentManagementNav")
+                @{
+                    var managedStudentId = HttpContextAccessor.HttpContext.Session.GetString("ManagedStudentId");
+                }
+                @if (managedStudentId != null)
+                {
+                    <component type="typeof(MS.CoachSystem.Web.Views.Shared.Components.StudentManagementNav)" render-mode="ServerPrerendered" param-StudentId="managedStudentId" />
+                }
                 @RenderBody()
             </main>
         </div>

@@ -1,0 +1,83 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@inject StudentService _studentService
+@using MS.CoachSystem.Core.Helpers
+@using MS.CoachSystem.Core.DTOs
+@using MS.CoachSystem.Service.Services
+@inject NavigationManager Navigation
+@using Microsoft.AspNetCore.Components
+
+@code {
+    [Parameter]
+    public string StudentId { get; set; }
+
+    private string coachId;
+    private StudentUserResponseDto selectedStudent;
+    private bool isLoading = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            coachId = AuthHelper.GetCoachId(httpContextAccessor: HttpContextAccessor);
+            if (string.IsNullOrEmpty(coachId))
+            {
+                throw new InvalidOperationException("Coach ID is not provided.");
+            }
+
+            if (string.IsNullOrEmpty(StudentId))
+            {
+                throw new InvalidOperationException("Student ID is not provided.");
+            }
+
+            var studentResponse = await _studentService.GetStudentsByIdsAsync(new List<string> { StudentId });
+            if (studentResponse == null || studentResponse.Data == null)
+            {
+                throw new InvalidOperationException("Failed to retrieve student data.");
+            }
+
+            selectedStudent = studentResponse.Data.FirstOrDefault();
+            if (selectedStudent == null)
+            {
+                throw new InvalidOperationException("Student not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
+
+@if (isLoading)
+{
+    <p>Loading...</p>
+}
+else if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p class="text-danger">@errorMessage</p>
+}
+else
+{
+    <nav class="c-white navbar navbar-expand-lg navbar-bg">
+        <a class="navbar-brand ms-2 c-white" href="#">@selectedStudent.Name @selectedStudent.Surname</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-5" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link c-white" href="@($"/UserTask/Index?CoachID={coachId}&StudentID={selectedStudent.Id}")">Görev Yönetimi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link c-white" href="#">Hedef Yönetimi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+}
+
