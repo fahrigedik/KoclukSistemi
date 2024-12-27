@@ -62,6 +62,7 @@ public class GenericService<T, TDto> : IGenericService<T, TDto> where T : class 
             throw new FileNotFoundException("Entity is not found");
         }
         var updatedEntity = mapper.Map(entity, entityToUpdate);
+        var result = await repository.UpdateAsync(updatedEntity);
         await unitOfWork.SaveChangesAsync();
         return mapper.Map<TDto>(updatedEntity);
     }
@@ -76,5 +77,17 @@ public class GenericService<T, TDto> : IGenericService<T, TDto> where T : class 
         repository.Delete(entityToDelete);
         await unitOfWork.SaveChangesAsync();
         return mapper.Map<TDto>(entityToDelete);
+    }
+
+    public async Task<T> GetMainEntityByIdAsync(int id)
+    {
+        var entity = await repository.GetByIdAsync(id);
+
+        if (entity is null)
+        {
+            throw new FileNotFoundException("Entity is not found");
+        }
+
+        return entity;
     }
 }

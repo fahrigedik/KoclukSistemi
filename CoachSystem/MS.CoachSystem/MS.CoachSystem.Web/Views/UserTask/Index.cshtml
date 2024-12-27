@@ -4,7 +4,7 @@
 @{
     Layout = "_StudentManagentLayout";
 }
-@model List<MS.CoachSystem.Core.DTOs.UserTaskDto>
+@model List<MS.CoachSystem.Entity.Entities.UserTask>
 
 
 <div class="container mt-4">
@@ -23,6 +23,9 @@
                 <th scope="col">Görev Önceliği</th>
                 <th scope="col">Bitiş Tarihi</th>
                 <th scope="col">Bitirilme Tarihi</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
             </tr>
         </thead>
         <tbody>
@@ -36,6 +39,13 @@
                     <td>@item.Priority</td>
                     <td>@item.DueDate?.ToString("dd.MM.yyyy HH:mm")</td>
                     <td>@item.CompletedDate?.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Update" asp-controller="UserTask" asp-route-id="@item.Id">Güncelle</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger" asp-action="Remove" asp-controller="UserTask" asp-route-id="@item.Id">Sil</a>
+                    </td>
+
                 </tr>
             }
         </tbody>

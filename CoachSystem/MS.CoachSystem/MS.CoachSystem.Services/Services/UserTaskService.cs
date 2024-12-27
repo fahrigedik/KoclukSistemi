@@ -22,13 +22,11 @@ public class UserTaskService : GenericService<UserTask, UserTaskDto>, IUserTaskS
         unitOfWork = _unitOfWork;
     }
 
-    public async Task<GenericResponse<List<UserTaskDto>>> GetUserTaskByStudentIdAsync(UserTaskRequestDto userTaskRequestDto)
+    public async Task<GenericResponse<List<UserTask>>> GetUserTaskByStudentIdAsync(UserTaskRequestDto userTaskRequestDto)
     {
         var userTasks = await repository.Where(x =>
             x.CoachID == userTaskRequestDto.CoachID && x.StudentID == userTaskRequestDto.StudentID).ToListAsync();
 
-        var userTaskDtos = mapper.Map<List<UserTaskDto>>(userTasks);
-
-        return GenericResponse<List<UserTaskDto>>.Success(userTaskDtos, HttpStatusCode.OK);
+        return GenericResponse<List<UserTask>>.Success(userTasks, HttpStatusCode.OK);
     }
 }

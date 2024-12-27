@@ -9,7 +9,7 @@ public class UserTaskDto
     public string Priority { get; set; }
     public DateTime? DueDate { get; set; }
     public DateTime? CompletedDate { get; set; }
-    public DateTime CreationDate { get; set; }
-    public DateTime ModificationDate { get; set; }
+    public DateTime? CreationDate { get; set; }
+    public DateTime? ModificationDate { get; set; }
 }
 

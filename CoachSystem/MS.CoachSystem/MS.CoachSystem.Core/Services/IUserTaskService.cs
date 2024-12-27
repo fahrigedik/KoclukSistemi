@@ -6,7 +6,7 @@ namespace MS.CoachSystem.Core.Services;
 
 public interface IUserTaskService : IGenericService<UserTask, UserTaskDto>
 {
-    Task<GenericResponse<List<UserTaskDto>>> GetUserTaskByStudentIdAsync(UserTaskRequestDto userTaskRequestDto);
+    Task<GenericResponse<List<UserTask>>> GetUserTaskByStudentIdAsync(UserTaskRequestDto userTaskRequestDto);
 }
 
 
