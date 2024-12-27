@@ -31,14 +31,11 @@ namespace MS.CoachSystem.Web.Controllers
             return View(userTasks.Data);
         }
 
-
-
         [HttpGet]
         public async Task<IActionResult> Create()
         {
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Create(UserTaskDto userTaskDto)
