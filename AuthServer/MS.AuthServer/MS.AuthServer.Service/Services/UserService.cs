@@ -156,7 +156,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
     }
 
     public async Task<GenericResponse<string>> RemoveStudentUserAsync(string userId)
-        {
+    {
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {

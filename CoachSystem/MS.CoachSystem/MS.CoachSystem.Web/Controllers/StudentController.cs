@@ -88,5 +88,13 @@ namespace MS.CoachSystem.Web.Controllers
             }
             return RedirectToAction("Index", "Student");
         }
+
+
+        [Authorize(Roles = "coach")]
+        public async Task<IActionResult> ManageStudent(string studentId)
+        {
+            var student = await _studentService.GetStudentsByIdsAsync(new List<string> { studentId });
+            return View(student.Data.First());
+        }
     }
 }

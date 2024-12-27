@@ -6,13 +6,15 @@
     <title>@ViewData["Title"] - MS.CoachSystem.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/utilities.css" asp-append-version="true" />
+
     <link rel="stylesheet" href="~/MS.CoachSystem.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <partial name="../Partial/_SidebarPartial.cshtml"></partial>
-            <main role="main" class="col mt-3">
+            <main role="main" class="col main">
                 @RenderBody()
             </main>
         </div>
