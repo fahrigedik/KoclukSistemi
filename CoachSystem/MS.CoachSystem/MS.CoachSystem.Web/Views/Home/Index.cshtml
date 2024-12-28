@@ -2,16 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-@{
-    ViewData["Title"] = "Home Page";
-}
-
 <div class="container mt-5">
     <div class="jumbotron text-center">
         <h1 class="display-4">Koçluk Uygulamasına Hoş Geldiniz!</h1>
         <p class="lead">Koçluk uygulamamız, koçlar ve öğrenciler arasındaki iletişimi ve işbirliğini güçlendirmek için tasarlanmıştır.</p>
         <hr class="my-4">
         <p>Görev yönetimi, hedef belirleme ve takip etme gibi özelliklerle koçluk sürecinizi daha verimli hale getirin.</p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Görev Yönetimi</h5>
+                    <p class="card-text">Öğrencileriniz için görevler oluşturun, atayın ve ilerlemelerini takip edin.</p>
+                    <a href="/UserTask/Index" class="btn btn-primary">Görevleri Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Hedef Yönetimi</h5>
+                    <p class="card-text">Öğrencilerinizin hedeflerini belirleyin ve bu hedeflere ulaşmalarına yardımcı olun.</p>
+                    <a href="/Goal/Index" class="btn btn-primary">Hedefleri Yönet</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">İletişim</h5>
+                    <p class="card-text">Koçlar ve öğrenciler arasında etkili iletişim kurun ve geri bildirim sağlayın.</p>
+                    <a href="/Communication/Index" class="btn btn-primary">İletişimi Yönet</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

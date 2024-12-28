@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MS.CoachSystem.Core.DTOs;
+using MS.CoachSystem.Core.DTOs.GoalDtos;
 using MS.CoachSystem.Entity.Entities;
 
 namespace MS.CoachSystem.Service.AutoMapper
@@ -23,6 +24,6 @@ namespace MS.CoachSystem.Service.AutoMapper
             CreateMap<ResourceType, ResourceTypeDto>().ReverseMap();
             CreateMap<UserTask, UserTaskDto>().ReverseMap();
         }
-        
+
     }
 }

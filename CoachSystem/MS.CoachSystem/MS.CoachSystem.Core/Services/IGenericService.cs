@@ -9,4 +9,6 @@ public interface IGenericService<T, TDto> where T : class where TDto : class
     Task<TDto> DeleteAsync(int id);
 
     Task<T> GetMainEntityByIdAsync(int id);
+
+    Task<IEnumerable<T>> GetAllMainEntitiesAsync();
 }

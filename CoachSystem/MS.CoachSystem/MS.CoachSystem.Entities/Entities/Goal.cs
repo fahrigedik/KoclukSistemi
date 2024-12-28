@@ -12,7 +12,7 @@ public class Goal : BaseEntity, IHasCreationAndModificationDates
     public DateTime? DueDate { get; set; }
     public DateTime? CompletedDate { get; set; }
     public int GoalTypeId { get; set; } // GoalType Id
-    public virtual GoalType GoalType { get; set; } // Navigation property
+    public virtual GoalType? GoalType { get; set; } // Navigation property
     public DateTime CreationDate { get; set; }
     public DateTime? ModificationDate { get; set; }
 }

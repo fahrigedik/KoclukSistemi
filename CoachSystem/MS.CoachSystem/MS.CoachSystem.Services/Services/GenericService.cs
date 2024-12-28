@@ -90,4 +90,16 @@ public class GenericService<T, TDto> : IGenericService<T, TDto> where T : class 
 
         return entity;
     }
+
+    public async Task<IEnumerable<T>> GetAllMainEntitiesAsync()
+    {
+        var entities = await repository.GetAllAsync();
+
+        if (entities is null)
+        {
+            throw new FileNotFoundException("Entities is not found");
+        }
+
+        return entities;
+    }
 }
