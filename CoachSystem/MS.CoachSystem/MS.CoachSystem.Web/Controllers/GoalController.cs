@@ -6,9 +6,12 @@ using MS.CoachSystem.Core.Services;
 using MS.CoachSystem.Entity.Entities;
 using MS.CoachSystem.Web.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace MS.CoachSystem.Web.Controllers
 {
+    [Authorize(Roles = "coach")]
     public class GoalController : Controller
     {
         private readonly IGoalService _goalService;

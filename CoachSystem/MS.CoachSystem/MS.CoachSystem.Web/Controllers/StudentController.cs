@@ -9,6 +9,7 @@ using MS.CoachSystem.Web.ViewModels;
 
 namespace MS.CoachSystem.Web.Controllers
 {
+    [Authorize(Roles = "coach")]
     public class StudentController : Controller
     {
         private readonly AuthService _authService;

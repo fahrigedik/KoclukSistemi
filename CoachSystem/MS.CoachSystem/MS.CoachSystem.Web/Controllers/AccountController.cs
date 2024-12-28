@@ -45,11 +45,5 @@ namespace MS.CoachSystem.Web.Controllers
             tokenResponse.Error.Errors.ToList().ForEach(x => ModelState.AddModelError(string.Empty, x));
             return View(loginDto);
         }
-
-        [Authorize(Roles = "coach")]
-        public IActionResult Test()
-        {
-            return View();
-        }
     }
 }

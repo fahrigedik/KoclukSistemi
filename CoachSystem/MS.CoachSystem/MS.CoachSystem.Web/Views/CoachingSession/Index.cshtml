@@ -4,25 +4,25 @@
 @{
     Layout = "_StudentManagentLayout";
 }
-@model List<MS.CoachSystem.Entity.Entities.UserTask>
+@model List<MS.CoachSystem.Entity.Entities.CoachingSession>
 
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center ms-2 mb-3">
-        <h2 class="c-black">Görevler</h2>
-        <a class="btn btn-primary me-3" asp-action="Create" asp-controller="UserTask">Görev Ekle</a>
+        <h2 class="c-black">Görüşmeler</h2>
+        <a class="btn btn-primary me-3" asp-action="Create" asp-controller="CoachingSession">Görüşme Ekle</a>
     </div>
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Görev Başlığı</th>
-                <th scope="col">Görev Açıklaması</th>
-                <th scope="col">Görev Durumu</th>
-                <th scope="col">Görev Önceliği</th>
-                <th scope="col">Bitiş Tarihi</th>
-                <th scope="col">Bitirilme Tarihi</th>
+                <th scope="col">Görüşme Konusu</th>
+                <th scope="col">Görüşme Notları</th>
+                <th scope="col">Görüşme Linki</th>
+                <th scope="col">Görüşme Tarihi</th>
+                <th scope="col">Görüşme Saati</th>
+                <th scope="col">Görüşme Durumu</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
 
@@ -33,18 +33,19 @@
             {
                 <tr>
                     <td></td>
-                    <td>@item.Title</td>
-                    <td>@item.Description</td>
-                    <td>@item.Status</td>
-                    <td>@item.Priority</td>
-                    <td>@item.DueDate?.ToString("dd.MM.yyyy HH:mm")</td>
-                    <td>@item.CompletedDate?.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@item.SessionTopic</td>
+                    <td>@item.SessionNotes</td>
+                    <td>@item.SessionLocation</td>
+                    <td>@item.SessionDate</td>
+                    <td>@item.SessionTime</td>
+                    <td>@item.SessionStatus</td>
                     <td>
                         <a class="btn btn-outline-info" asp-action="Update" asp-controller="CoachingSession" asp-route-id="@item.Id">Güncelle</a>
                     </td>
                     <td>
                         <a class="btn btn-outline-danger" asp-action="Remove" asp-controller="CoachingSession" asp-route-id="@item.Id">Sil</a>
                     </td>
+
                 </tr>
             }
         </tbody>
