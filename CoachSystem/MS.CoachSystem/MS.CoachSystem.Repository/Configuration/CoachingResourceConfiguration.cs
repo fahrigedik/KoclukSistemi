@@ -12,7 +12,5 @@ public class CoachingResourceConfiguration : IEntityTypeConfiguration<CoachingRe
         builder.Property(x => x.Title).IsRequired().HasMaxLength(128);
         builder.Property(x => x.Description).IsRequired().HasMaxLength(512);
         builder.Property(x => x.URL).IsRequired();
-        builder.Property(x => x.IsActive).IsRequired();
-
     }
 }

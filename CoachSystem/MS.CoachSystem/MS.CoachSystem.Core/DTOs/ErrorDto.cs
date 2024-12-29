@@ -19,6 +19,7 @@ namespace MS.CoachSystem.Core.DTOs
 
         public ErrorDto(string error, bool isShow)
         {
+            Errors = new List<string>();
             Errors.Add(error);
             IsShow = isShow;
         }
