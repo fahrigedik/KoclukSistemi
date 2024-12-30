@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+ header{
+    background-color: blueviolet;
+    color: white;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 20px;
+    z-index: 32;
+}
+header ul{
+    margin: 0;
+}
+header ul li{
+    font-size: 20px;
+}
+.headerContainer {
+    display: flex;
+    padding: 30px 0px;
+    justify-content: space-between;
+}
+.userAction{
+    list-style-type: none;
+}
+.brand{
+    font-size: 30px;
+    font-weight: bold;
+}
+.routerDiv{
+    display:flex;
+    align-items: center;
+}
+
+
+.loginContainer{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginContainer form{
+    width: 500px;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.loginContainer form h1{
+    color:grey;
+    margin-bottom: 20px;
+}
+
+.loginContainer form input{
+    background: rgb(217, 223, 236);
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom:12px ;
+}
+
+.loginContainer .btn-block{
+    background: blueviolet;
+    color: white;
+    width: 100%;
+}
+
+.loginContainer .btn-block:hover{
+    background:white;
+    color: blueviolet ;
+    border:1px solid blueviolet;
+}  
+
+.input-alert{
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* 
+.userAuthAction{
+display:flex;
+}
+
+.homeContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    fw-bold display-5 text-center mb-4  -ANSWAR
+    bg-light p-5 rounded-3 mb-4  -WHATIS
+    col-md-6 bg-dark text-white p-5 rounded-3 -COACHLY
+    col-md-6 bg-light border p-5 rounded-3 -STUNDTLY
+} */
+
+
+.sidebar{
+    top: 100px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.sidebar .nav-link{
+    display: flex;
+    color: black;
+    font-weight: 500;
+}
+
+.nav-link.nav-link.router-link-exact-active{
+    color: blueviolet;
+}
+.dashboardTop{
+    margin-top: 150px;
+}
