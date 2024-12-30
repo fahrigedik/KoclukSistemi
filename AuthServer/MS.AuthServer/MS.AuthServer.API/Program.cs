@@ -26,6 +26,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowVueApp",
+        policy => policy.WithOrigins("http://localhost:5173") // Vue.js uygulamanızın adresi
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 //DI Register
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
@@ -110,6 +118,7 @@ app.UseHttpsRedirection();
 
 app.UseCustomExceptionHandle();
 
+app.UseCors("AllowVueApp");
 
 app.UseAuthentication();
 app.UseAuthorization();

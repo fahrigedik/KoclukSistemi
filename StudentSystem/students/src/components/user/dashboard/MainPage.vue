@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
-// import {useUserStore} from '@/stores/user'
-// const userStore=useUserStore();    görevlerim ve gerövi ekle nav-item classından sonmra v-if="userStore.user.isAdmin" bu ifadeyi yapıştır yetkisi olmayan görev güncelleyip eklemesin..
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 </script>

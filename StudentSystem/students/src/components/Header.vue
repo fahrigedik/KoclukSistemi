@@ -9,9 +9,13 @@
             </div>
             <div class="routerDiv">
                 <ul class="userAction">
-                    <li v-if="!userStore.auth">
-                <router-link to="/" class="nav-link1">Anasayfa &nbsp;</router-link>
-                <router-link to="/login" class="nav-link2">&nbsp;Çıkış Yap</router-link>
+                    <li>
+                        <router-link to="/" class="nav-link1">Anasayfa &nbsp;</router-link>
+                        <a v-if="userStore.isAuthenticated" 
+                           @click="handleLogout" 
+                           class="nav-link2 cursor-pointer">
+                            &nbsp;Çıkış Yap
+                        </a>
                     </li>
                </ul>
             </div>
@@ -20,6 +24,13 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/user';
-const userStore=useUserStore();
+import { useUserStore } from '@/stores/user'
+import { storeToRefs } from 'pinia'
+
+const userStore = useUserStore()
+const { isAuthenticated } = storeToRefs(userStore)
+
+const handleLogout = () => {
+    userStore.logout()
+}
 </script>

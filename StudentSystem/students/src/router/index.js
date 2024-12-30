@@ -7,7 +7,7 @@ import Profile from '@/components/user/dashboard/Profile.vue'
 import Taskes from '@/components/user/dashboard/admin/Taskes.vue'
 import AddTask from '@/components/user/dashboard/admin/AddTask.vue'
 import EditTask from '@/components/user/dashboard/admin/EditTask.vue'
-//import {isAuth,isLoggedIn} from '@/composables/auth'
+import { jwtDecode } from "jwt-decode"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,22 +21,75 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login,
-    //beforeEnter:isLoggedIn,
+      beforeEnter: (to, from, next) => {
+        const token = localStorage.getItem('accessToken')
+        if (token) {
+          next('/user/dashboard')
+        } else {
+          next()
+        }
+      }
     },
     {
       path: '/user/dashboard',
       name: 'mainpage',
-      //beforeEnter:isAuth,
-      component: MainPage,children:[
-        {path:'',component:Dashboard,name:'dashboard'},
-        {path:'profile',component:Profile,name:'profile'},
-        {path:'taskes',component:Taskes,name:'taskes'},
-        {path:'taskes/add',component:AddTask,name:'taskes_add'},
-        {path:'taskes/edit/:id',component:EditTask,name:'taskes_edit'}
+      component: MainPage,
+      meta: { requiresAuth: true, roles: ['student'] },
+      children:[
+        {
+          path:'',
+          component: Dashboard,
+          name:'dashboard',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path:'profile',
+          component: Profile,
+          name:'profile',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path:'taskes',
+          component: Taskes,
+          name:'taskes',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path:'taskes/add',
+          component: AddTask,
+          name:'taskes_add',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path:'taskes/edit/:id',
+          component: EditTask,
+          name:'taskes_edit',
+          meta: { requiresAuth: true, roles: ['student'] }
+        }
       ]
     },
+  ]
+})
 
-  ],
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('accessToken')
+  
+  if (to.meta.requiresAuth && !token) {
+    next('/login')
+    return
+  }
+
+  if (to.meta.roles && token) {
+    const decodedToken = jwtDecode(token)
+    const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+    
+    if (!to.meta.roles.includes(userRole)) {
+      next('/')
+      return
+    }
+  }
+  
+  next()
 })
 
 export default router
