@@ -31,7 +31,7 @@
           </div>
           </Field>
       </div>
-      <div class="mb-4">
+      <div class="mb-4">    
         <Field name="analysis" v-slot="{field,errors,errorMessage}">
           <select v-bind="field" class="form-select" :class="
             {'is-invalid': errors.length !== 0}">
