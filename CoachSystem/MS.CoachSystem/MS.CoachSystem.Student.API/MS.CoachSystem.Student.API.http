@@ -1,0 +1,6 @@
+@MS.CoachSystem.Student.API_HostAddress = http://localhost:5001
+
+GET {{MS.CoachSystem.Student.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

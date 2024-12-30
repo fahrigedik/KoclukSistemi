@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.CoachSystem.Service", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.CoachSystem.Web", "MS.CoachSystem.Web\MS.CoachSystem.Web.csproj", "{9ABA9B6D-2927-44AC-99A1-743645F80B6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.CoachSystem.Student.API", "MS.CoachSystem.Student.API\MS.CoachSystem.Student.API.csproj", "{B69BA064-7E45-46C9-B16F-ED1734752BDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9ABA9B6D-2927-44AC-99A1-743645F80B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABA9B6D-2927-44AC-99A1-743645F80B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABA9B6D-2927-44AC-99A1-743645F80B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B69BA064-7E45-46C9-B16F-ED1734752BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69BA064-7E45-46C9-B16F-ED1734752BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69BA064-7E45-46C9-B16F-ED1734752BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69BA064-7E45-46C9-B16F-ED1734752BDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

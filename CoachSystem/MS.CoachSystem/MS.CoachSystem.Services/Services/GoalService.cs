@@ -23,15 +23,30 @@ public class GoalService : GenericService<Goal, GoalDto>, IGoalService
         unitOfWork = _unitOfWork;
     }
 
-    public async Task<GenericResponse<List<Goal>>> GetAllGoalWithTypeByStudentId(GoalRequestDto goalRequest)
+    public async Task<GenericResponse<List<GoalWithTypeNamesDto>>> GetAllGoalWithTypeByStudentId(GoalRequestDto goalRequest)
     {
         var goals = await repository
-            .Where(x => x.CoachID == goalRequest.CoachID && x.StudentID == goalRequest.StudentID).ToListAsync();
-        foreach (var goal in goals)
+            .Where(x => x.CoachID == goalRequest.CoachID && x.StudentID == goalRequest.StudentID)
+            .Include(x => x.GoalType)
+            .ToListAsync();
+
+        var goalDtos = goals.Select(goal => new GoalWithTypeNamesDto
         {
-            var goalType = await goalTypeRepository.GetByIdAsync(goal.GoalTypeId);
-            goal.GoalType = goalType;
-        }
-        return GenericResponse<List<Goal>>.Success(goals, HttpStatusCode.OK);
+            Id = goal.Id,
+            StudentID = goal.StudentID,
+            CoachID = goal.CoachID,
+            GoalTitle = goal.GoalTitle,
+            GoalDescription = goal.GoalDescription,
+            Status = goal.Status,
+            DueDate = goal.DueDate,
+            CompletedDate = goal.CompletedDate,
+            GoalTypeId = goal.GoalTypeId,
+            GoalTypeName = goal.GoalType.TypeName,
+            CreationDate = goal.CreationDate,
+            ModificationDate = goal.ModificationDate
+        }).ToList();
+
+        return GenericResponse<List<GoalWithTypeNamesDto>>.Success(goalDtos, HttpStatusCode.OK);
     }
+
 }

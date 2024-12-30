@@ -4,7 +4,7 @@
 @{
     Layout = "_StudentManagentLayout";
 }
-@model List<MS.CoachSystem.Entity.Entities.Goal>
+@model List<MS.CoachSystem.Core.DTOs.GoalDtos.GoalWithTypeNamesDto>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center ms-2 mb-3">
@@ -36,7 +36,7 @@
                     <td>@item.GoalDescription</td>
                     <td>@item.Status</td>
                     <td>
-                        @item.GoalType.TypeName
+                        @item.GoalTypeName
                     </td>
                     <td>@item.DueDate?.ToString("dd.MM.yyyy HH:mm")</td>
                     <td>@item.CompletedDate?.ToString("dd.MM.yyyy HH:mm")</td>
