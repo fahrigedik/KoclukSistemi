@@ -27,6 +27,11 @@ namespace MS.CoachSystem.Student.API.Controllers
         {
             var coachId = await _coachStudentService.GetCoachIdByStudentIdAsync(studentId);
 
+            if (coachId.Data is null)
+            {
+                return await ActionResultInstanceAsync(coachId);
+            }
+
             var requestDto = new CoachingResourceRequestDto()
             {
                 CoachID = coachId.Data.First(),

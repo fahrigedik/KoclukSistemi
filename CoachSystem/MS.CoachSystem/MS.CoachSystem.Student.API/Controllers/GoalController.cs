@@ -12,15 +12,26 @@ namespace MS.CoachSystem.Student.API.Controllers
     public class GoalController : CustomBaseController
     {
         private readonly IGoalService _goalService;
+        private readonly ICoachStudentService _coachStudentService;
 
-        public GoalController(IGoalService goalService)
+        public GoalController(IGoalService goalService, ICoachStudentService coachStudentService)
         {
             _goalService = goalService;
+            _coachStudentService = coachStudentService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetGoals([FromQuery] GoalRequestDto request)
+        public async Task<IActionResult> GetGoals([FromQuery] string studentId)
         {
+            var coachId = await _coachStudentService.GetCoachIdByStudentIdAsync(studentId);
+
+            if (coachId.Data is null)
+            {
+                return await ActionResultInstanceAsync(coachId);
+            }
+
+            var request = new GoalRequestDto { StudentID = studentId, CoachID = coachId.Data.FirstOrDefault() };
+
             var goals = await _goalService.GetAllGoalWithTypeByStudentId(request);
             return await ActionResultInstanceAsync(goals);
         }

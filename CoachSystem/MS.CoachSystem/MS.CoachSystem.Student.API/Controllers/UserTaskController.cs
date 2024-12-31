@@ -14,15 +14,26 @@ namespace MS.CoachSystem.Student.API.Controllers
     public class UserTaskController : CustomBaseController
     {
         private readonly IUserTaskService _userTaskService;
+        private readonly ICoachStudentService _coachStudentService;
 
-        public UserTaskController(IUserTaskService userTaskService)
+        public UserTaskController(IUserTaskService userTaskService, ICoachStudentService coachStudentService)
         {
             _userTaskService = userTaskService;
+            _coachStudentService = coachStudentService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUserTasks([FromQuery] UserTaskRequestDto request)
+        public async Task<IActionResult> GetUserTasks([FromQuery] string studentId)
         {
+            var coachId = await _coachStudentService.GetCoachIdByStudentIdAsync(studentId);
+
+            if (coachId.Data is null)
+            {
+                return await ActionResultInstanceAsync(coachId);
+            }
+
+            var request = new UserTaskRequestDto { StudentID = studentId, CoachID = coachId.Data.FirstOrDefault() };
+
             var tasks = await _userTaskService.GetUserTaskByStudentIdAsync(request);
             return await ActionResultInstanceAsync(tasks);
         }
