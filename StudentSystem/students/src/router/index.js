@@ -83,6 +83,12 @@ const router = createRouter({
           component: () => import('@/components/user/dashboard/student/GoalTable.vue'),
           name: 'goals',
           meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path: 'tasks',
+          component: () => import('@/components/user/dashboard/student/TaskTable.vue'),
+          name: 'tasks',
+          meta: { requiresAuth: true, roles: ['student'] }
         }
       ]
     },

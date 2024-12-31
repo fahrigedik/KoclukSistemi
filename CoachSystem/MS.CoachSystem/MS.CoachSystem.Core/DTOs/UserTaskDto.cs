@@ -7,6 +7,8 @@ public class UserTaskDto
     public string Description { get; set; }
     public string Status { get; set; }
     public string Priority { get; set; }
+    public bool IsCompleted { get; set; }
+    public bool IsWorking { get; set; }
     public DateTime? DueDate { get; set; }
     public DateTime? CompletedDate { get; set; }
     public DateTime? CreationDate { get; set; }

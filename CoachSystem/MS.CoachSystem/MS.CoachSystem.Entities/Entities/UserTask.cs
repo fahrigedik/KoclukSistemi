@@ -10,6 +10,8 @@ public class UserTask : BaseEntity, IHasCreationAndModificationDates
     public string? Description { get; set; }
     public string? Status { get; set; }
     public string? Priority { get; set; }
+    public bool IsCompleted { get; set; } = false;
+    public bool IsWorking { get; set; } = false;
     public DateTime? DueDate { get; set; }
     public DateTime? CompletedDate { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now;

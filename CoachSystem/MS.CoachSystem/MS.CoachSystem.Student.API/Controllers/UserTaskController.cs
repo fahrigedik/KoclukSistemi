@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using MS.CoachSystem.Core.DTOs;
 using MS.CoachSystem.Core.DTOs.UserTaskDtos;
 using MS.CoachSystem.Core.Services;
+using MS.CoachSystem.Entity.Entities;
+using MS.CoachSystem.Service.Services;
 
 namespace MS.CoachSystem.Student.API.Controllers
 {
@@ -44,12 +46,30 @@ namespace MS.CoachSystem.Student.API.Controllers
             var task = await _userTaskService.GetByIdAsync(id);
             if (task == null)
             {
-                return NotFound();
+                return ActionResultInstance(GenericResponse<string>.Fail("Goal is not found", HttpStatusCode.OK, true));
             }
 
-            task.CompletedDate = DateTime.Now;
-            var updatedTask = await _userTaskService.UpdateAsync(task, id);
+            var completedTaskResponse = await _userTaskService.MarkTaskAsCompleted(task);
+
+            var updatedTask = await _userTaskService.UpdateAsync(completedTaskResponse.Data, id);
             return await ActionResultInstanceAsync(GenericResponse<UserTaskDto>.Success(updatedTask, HttpStatusCode.OK));
+        }
+
+
+        [HttpPatch("{id}/working")]
+        public async Task<IActionResult> MarkTaskAsWorking(int id)
+        {
+            var task = await _userTaskService.GetByIdAsync(id);
+
+            if (task == null)
+            {
+                return ActionResultInstance(GenericResponse<string>.Fail("Goal is not found", HttpStatusCode.OK, true));
+            }
+
+            var workingTaskResponse = await _userTaskService.MarkTaskAsWorking(task);
+
+            var updatedGoal = await _userTaskService.UpdateAsync(workingTaskResponse.Data, id);
+            return await ActionResultInstanceAsync(GenericResponse<UserTaskDto>.Success(updatedGoal, HttpStatusCode.OK));
         }
     }
 }
