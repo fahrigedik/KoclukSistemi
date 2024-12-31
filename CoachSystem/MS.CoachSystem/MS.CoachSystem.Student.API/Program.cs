@@ -19,6 +19,14 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowVueApp",
+        policy => policy.WithOrigins("http://localhost:5173") // Vue.js uygulamanýzýn adresi
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 builder.Services.Configure<CustomTokenOption>(builder.Configuration.GetSection("TokenOptions"));
 
 builder.Services.AddHttpClient<AuthService>(client =>
@@ -71,6 +79,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowVueApp");
 
 app.UseAuthentication();
 app.UseAuthorization();

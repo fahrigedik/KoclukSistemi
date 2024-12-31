@@ -174,6 +174,12 @@ namespace MS.CoachSystem.Repository.Migrations
                     b.Property<int>("GoalTypeId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorking")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("datetime2");
 

@@ -13,4 +13,6 @@ public class GoalDto
     public int GoalTypeId { get; set; }
     public DateTime CreationDate { get; set; }
     public DateTime ModificationDate { get; set; }
+    public bool IsCompleted { get; set; }
+    public bool IsWorking { get; set; }
 }

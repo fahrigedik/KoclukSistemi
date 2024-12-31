@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', {
         refreshToken: localStorage.getItem('refreshToken'),
         tokenExpiration: localStorage.getItem('tokenExpiration'),
         userRole: null,
+        userId: null,
         loading: false,
         error: null,
         isAuthenticated: !!localStorage.getItem('accessToken')
@@ -28,13 +29,12 @@ export const useUserStore = defineStore('user', {
                     
                     const decodedToken = jwtDecode(token)
                     this.userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+                    this.userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
                     
                     this.isAuthenticated = true
                     
                     if (this.userRole === 'student') {
                         router.push('/user/dashboard')
-                    } else {
-                        router.push('/')
                     }
                 }
                 return response
@@ -51,11 +51,14 @@ export const useUserStore = defineStore('user', {
             this.refreshToken = null
             this.tokenExpiration = null
             this.userRole = null
+            this.userId = null
             this.error = null
             this.isAuthenticated = false
+            
             localStorage.removeItem('accessToken')
             localStorage.removeItem('refreshToken')
             localStorage.removeItem('tokenExpiration')
+            
             router.push('/login')
         }
     }

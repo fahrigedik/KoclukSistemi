@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MS.CoachSystem.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241228205125_mig5")]
-    partial class mig5
+    [Migration("20241231142843_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,6 +176,12 @@ namespace MS.CoachSystem.Repository.Migrations
 
                     b.Property<int>("GoalTypeId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorking")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("datetime2");

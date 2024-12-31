@@ -65,6 +65,24 @@ const router = createRouter({
           component: EditTask,
           name:'taskes_edit',
           meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path: 'resources',
+          name: 'resources',
+          component: () => import('@/components/user/dashboard/student/ResourceTable.vue'),
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path:'sessions',
+          component: () => import('@/components/user/dashboard/student/SessionTable.vue'),
+          name:'sessions',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path: 'goals',
+          component: () => import('@/components/user/dashboard/student/GoalTable.vue'),
+          name: 'goals',
+          meta: { requiresAuth: true, roles: ['student'] }
         }
       ]
     },

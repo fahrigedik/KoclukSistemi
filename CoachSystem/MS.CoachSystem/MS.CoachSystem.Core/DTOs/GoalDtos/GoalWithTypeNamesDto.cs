@@ -13,6 +13,8 @@ public class GoalWithTypeNamesDto
     public DateTime? CompletedDate { get; set; }
     public int GoalTypeId { get; set; } // GoalType Id
     public string GoalTypeName { get; set; }
+    public bool IsCompleted { get; set; }
+    public bool IsWorking { get; set; }
     public DateTime CreationDate { get; set; }
     public DateTime? ModificationDate { get; set; }
 }

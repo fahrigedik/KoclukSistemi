@@ -45,8 +45,25 @@ namespace MS.CoachSystem.Student.API.Controllers
                 return ActionResultInstance(GenericResponse<string>.Fail("Goal is not found", HttpStatusCode.OK, true));
             }
 
-            goal.CompletedDate = DateTime.Now;
-            var updatedGoal = await _goalService.UpdateAsync(goal, id);
+            var completedGoalResponse = await _goalService.MarkGoalAsCompletedAsync(goal);
+
+            var updatedGoal = await _goalService.UpdateAsync(completedGoalResponse.Data, id);
+            return await ActionResultInstanceAsync(GenericResponse<GoalDto>.Success(updatedGoal, HttpStatusCode.OK));
+        }
+
+
+        [HttpPatch("{id}/working")]
+        public async Task<IActionResult> MarkGoalAsWorking(int id)
+        {
+            var goal = await _goalService.GetByIdAsync(id);
+            if (goal == null)
+            {
+                return ActionResultInstance(GenericResponse<string>.Fail("Goal is not found", HttpStatusCode.OK, true));
+            }
+
+            var completedGoalResponse = await _goalService.MarkGoalAsWorkingAsync(goal);
+
+            var updatedGoal = await _goalService.UpdateAsync(completedGoalResponse.Data, id);
             return await ActionResultInstanceAsync(GenericResponse<GoalDto>.Success(updatedGoal, HttpStatusCode.OK));
         }
     }

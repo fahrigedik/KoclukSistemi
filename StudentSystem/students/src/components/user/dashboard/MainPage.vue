@@ -28,6 +28,8 @@
                                 <span>Görevi Ekle</span>
                             </router-link>
                         </li>
+                        <router-link to="/user/dashboard/resources">Resources</router-link>
+
                     </ul>
                 </div>
 

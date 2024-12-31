@@ -21,9 +21,10 @@ namespace MS.CoachSystem.Repository.Migrations
                     StudentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SessionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SessionTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    SessionDuration = table.Column<TimeSpan>(type: "time", nullable: true),
                     SessionTopic = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     SessionNotes = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
+                    SessionLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SessionStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -123,7 +124,9 @@ namespace MS.CoachSystem.Repository.Migrations
                     CompletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     GoalTypeId = table.Column<int>(type: "int", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsWorking = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -143,10 +146,10 @@ namespace MS.CoachSystem.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CoachID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudentID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
                     URL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ResourceTypeId = table.Column<int>(type: "int", nullable: false)

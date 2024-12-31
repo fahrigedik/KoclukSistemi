@@ -1,4 +1,5 @@
-﻿using MS.CoachSystem.Entity.Base;
+﻿using System.Dynamic;
+using MS.CoachSystem.Entity.Base;
 
 namespace MS.CoachSystem.Entity.Entities;
 
@@ -15,5 +16,7 @@ public class Goal : BaseEntity, IHasCreationAndModificationDates
     public virtual GoalType? GoalType { get; set; } // Navigation property
     public DateTime CreationDate { get; set; }
     public DateTime? ModificationDate { get; set; }
+    public bool IsCompleted { get; set; } = false;
+    public bool IsWorking { get; set; } = false;
 }
 

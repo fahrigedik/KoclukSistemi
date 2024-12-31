@@ -40,6 +40,6 @@ namespace MS.CoachSystem.Student.API.Controllers
 
             var resources = await _coachingResourceService.GetAllCoachingResourceWithDetailByStudentIdAsync(requestDto);
             return await ActionResultInstanceAsync(resources);
-        }
+                    }
     }
 }
