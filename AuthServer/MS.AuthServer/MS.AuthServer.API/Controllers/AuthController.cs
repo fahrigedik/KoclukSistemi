@@ -17,7 +17,7 @@ public class AuthController : CustomBaseController
 
     [HttpPost]
     public async Task<IActionResult> CreateToken(LoginDto loginDto)
-    {
+        {
         var result = await _authenticationService.CreateTokenAsync(loginDto);
         return ActionResultInstance(result);
     }

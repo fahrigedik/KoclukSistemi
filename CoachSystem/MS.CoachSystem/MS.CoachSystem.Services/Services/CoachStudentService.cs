@@ -40,4 +40,16 @@ public class CoachStudentService : GenericService<CoachStudent, CoachStudentDto>
 
         return GenericResponse<string>.Success(entity.Id.ToString(), HttpStatusCode.OK);
     }
+
+    public async  Task<GenericResponse<List<string>>> GetCoachIdByStudentIdAsync(string studentId)
+    {
+        var entity = coachStudentRepository.Where(x => x.StudentId == studentId);
+
+        if (entity is null)
+        {
+            return GenericResponse<List<string>>.Fail("Entity not found", HttpStatusCode.NotFound, true);
+        }
+        var response = entity.Select(x => x.CoachId).ToList();
+        return GenericResponse<List<string>>.Success(response, HttpStatusCode.OK);
+    }
 }
