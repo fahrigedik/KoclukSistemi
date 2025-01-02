@@ -1,12 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/components/Home.vue'
 import Login from '@/components/user/Login.vue'
-import MainPage from '@/components/user/dashboard/MainPage.vue'
+import Sidebar from '@/components/user/dashboard/Sidebar.vue'
 import Dashboard from '@/components/user/dashboard/Dashboard.vue'
-import Profile from '@/components/user/dashboard/Profile.vue'
-import Taskes from '@/components/user/dashboard/admin/Taskes.vue'
-import AddTask from '@/components/user/dashboard/admin/AddTask.vue'
-import EditTask from '@/components/user/dashboard/admin/EditTask.vue'
+import Profile from '@/components/user/dashboard/student/Profile.vue'
 import { jwtDecode } from "jwt-decode"
 
 const router = createRouter({
@@ -32,8 +29,8 @@ const router = createRouter({
     },
     {
       path: '/user/dashboard',
-      name: 'mainpage',
-      component: MainPage,
+      name: 'sidebar',
+      component: Sidebar,
       meta: { requiresAuth: true, roles: ['student'] },
       children:[
         {
@@ -46,24 +43,6 @@ const router = createRouter({
           path:'profile',
           component: Profile,
           name:'profile',
-          meta: { requiresAuth: true, roles: ['student'] }
-        },
-        {
-          path:'taskes',
-          component: Taskes,
-          name:'taskes',
-          meta: { requiresAuth: true, roles: ['student'] }
-        },
-        {
-          path:'taskes/add',
-          component: AddTask,
-          name:'taskes_add',
-          meta: { requiresAuth: true, roles: ['student'] }
-        },
-        {
-          path:'taskes/edit/:id',
-          component: EditTask,
-          name:'taskes_edit',
           meta: { requiresAuth: true, roles: ['student'] }
         },
         {
@@ -88,6 +67,18 @@ const router = createRouter({
           path: 'tasks',
           component: () => import('@/components/user/dashboard/student/TaskTable.vue'),
           name: 'tasks',
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path: 'pomodoro',
+          name: 'pomodoro',
+          component: () => import('@/components/user/dashboard/Pomodoro.vue'),
+          meta: { requiresAuth: true, roles: ['student'] }
+        },
+        {
+          path: 'profile',
+          name: 'profile',
+          component: () => import('@/components/user/dashboard/student/Profile.vue'),
           meta: { requiresAuth: true, roles: ['student'] }
         }
       ]

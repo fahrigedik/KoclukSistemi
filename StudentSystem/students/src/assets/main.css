@@ -8,11 +8,11 @@ a{
     text-decoration: none;
 }
  header{
-    background-color: blueviolet;
+    background-color: rgb(95, 14, 171);
     color: white;
     position: fixed;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     z-index: 32;
 }
 header ul{
@@ -117,8 +117,19 @@ display:flex;
 }
 
 .nav-link.nav-link.router-link-exact-active{
-    color: blueviolet;
+    color: white;
+    background-color:  #1867c0;
 }
+
+.nav-link.nav-link.router-link-exact-active .v-icon{
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #e3f2fd;
+    color: #1867c0;
+}
+
 .dashboardTop{
     margin-top: 150px;
 }

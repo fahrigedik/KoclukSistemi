@@ -32,6 +32,7 @@ export const useUserStore = defineStore('user', {
                     this.userId = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
                     
                     this.isAuthenticated = true
+                    this.startTokenExpirationCheck()
                     
                     if (this.userRole === 'student') {
                         router.push('/user/dashboard')
@@ -43,6 +44,45 @@ export const useUserStore = defineStore('user', {
                 throw error
             } finally {
                 this.loading = false
+            }
+        },
+
+        async refreshToken() {
+            try {
+                const response = await authService.refreshToken()
+                if (response.data) {
+                    this.accessToken = response.data.accessToken
+                    this.refreshToken = response.data.refreshToken
+                    this.tokenExpiration = response.data.accessTokenExpiration
+                    return true
+                }
+                return false
+            } catch (error) {
+                console.error('Token refresh failed:', error)
+                this.logout()
+                return false
+            }
+        },
+
+        startTokenExpirationCheck() {
+            // Check token expiration every minute
+            setInterval(() => {
+                this.checkTokenExpiration()
+            }, 60000)
+        },
+
+        checkTokenExpiration() {
+            const expiration = this.tokenExpiration
+            if (!expiration) {
+                this.logout()
+                return
+            }
+
+            const expirationDate = new Date(expiration)
+            const now = new Date()
+
+            if (now >= expirationDate) {
+                this.logout()
             }
         },
 

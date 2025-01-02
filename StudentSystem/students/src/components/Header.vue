@@ -7,18 +7,6 @@
                     <span>&nbsp; Coachly</span>
                 </router-link>
             </div>
-            <div class="routerDiv">
-                <ul class="userAction">
-                    <li>
-                        <router-link to="/" class="nav-link1">Anasayfa &nbsp;</router-link>
-                        <a v-if="userStore.isAuthenticated" 
-                           @click="handleLogout" 
-                           class="nav-link2 cursor-pointer">
-                            &nbsp;Çıkış Yap
-                        </a>
-                    </li>
-               </ul>
-            </div>
         </div>
     </header>
 </template>

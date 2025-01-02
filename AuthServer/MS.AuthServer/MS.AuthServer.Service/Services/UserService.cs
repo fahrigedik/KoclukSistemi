@@ -165,5 +165,35 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
         _userManager.DeleteAsync(user);
         return GenericResponse<string>.Success("User deleted", HttpStatusCode.OK);
     }
+
+    public async Task<GenericResponse<UpdateUserDto>> UpdateUserAsync(UpdateUserDto updateUserDto)
+    {
+        var user = await _userManager.FindByIdAsync(updateUserDto.Id);
+        if (user == null)
+        {
+            return GenericResponse<UpdateUserDto>.Fail("User not found", HttpStatusCode.NotFound, true);
+        }
+
+        user.UserName = updateUserDto.UserName;
+        user.Email = updateUserDto.Email;
+        user.Name = updateUserDto.Name;
+        user.Surname = updateUserDto.Surname;
+        user.PhoneNumber = updateUserDto.PhoneNumber;
+        user.BirthDate = updateUserDto.BirthDate;
+        user.TCKN = updateUserDto.TCKN;
+        user.Gender = updateUserDto.Gender;
+
+        var result = await _userManager.UpdateAsync(user);
+
+        if (!result.Succeeded)
+        {
+            var errors = result.Errors.Select(e => e.Description).ToList();
+            return GenericResponse<UpdateUserDto>.Fail(new ErrorDto(errors, true), HttpStatusCode.BadRequest);
+        }
+
+        var updatedUserDto = _mapper.Map<UpdateUserDto>(user);
+        return GenericResponse<UpdateUserDto>.Success(updatedUserDto, HttpStatusCode.OK);
+
+    }
 }
 

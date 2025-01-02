@@ -14,5 +14,7 @@ public interface IUserService
     Task<GenericResponse<CreateStudentUserResponseDto>> CreateStudentUserAsync(CreateUserDto createUserDto);
 
     Task<GenericResponse<string>> RemoveStudentUserAsync(string userId);
+
+    Task<GenericResponse<UpdateUserDto>> UpdateUserAsync(UpdateUserDto updateUserDto);
 }
 

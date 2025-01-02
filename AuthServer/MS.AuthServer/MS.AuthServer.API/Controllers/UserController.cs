@@ -40,7 +40,7 @@ public class UserController : CustomBaseController
         return ActionResultInstance(result);
     }
 
-    [Authorize(Roles = "coach")]
+    [Authorize(Roles = "coach,student")]
     [HttpPost]
     public async Task<IActionResult> GetUsersByIds(List<string> userIds)
     {
@@ -62,6 +62,14 @@ public class UserController : CustomBaseController
     public async Task<IActionResult> RemoveStudentUser(RemoveStudentDto studentDto)
     {
         var result = await _userService.RemoveStudentUserAsync(studentDto.UserId);
+        return ActionResultInstance(result);
+    }
+
+    [Authorize(Roles = "coach,student")]
+    [HttpPost]
+    public async Task<IActionResult> UpdateUser(UpdateUserDto updateUserDto)
+    {
+        var result = await _userService.UpdateUserAsync(updateUserDto);
         return ActionResultInstance(result);
     }
 }
