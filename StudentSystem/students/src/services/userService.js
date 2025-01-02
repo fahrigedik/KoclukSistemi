@@ -50,5 +50,19 @@ export const userService = {
             console.error('GetUsersByIds error:', error)
             throw error
         }
+    },
+    async updateUser(userData) {
+        try {
+            const response = await userApi.post('/User/UpdateUser', userData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return response.data
+        } catch (error) {
+            console.error('UpdateUser error:', error)
+            throw error
+        }
     }
+
 }

@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.core\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|solutionrelative:ms.authserver.core\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.service\\automapper\\mapprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|solutionrelative:ms.authserver.service\\automapper\\mapprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3B123E5-26EB-4963-868A-75B0BE689C58}|MS.AuthServer.Service\\MS.AuthServer.Service.csproj|solutionrelative:ms.authserver.service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.core\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|solutionrelative:ms.authserver.core\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31956083-6A1A-4ED7-9401-AD3FBBC766C4}|MS.AuthServer.Core\\MS.AuthServer.Core.csproj|c:\\fahrigedikprivate\\kocluksistemi\\authserver\\ms.authserver\\ms.authserver.core\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +50,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MapProfile.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\AutoMapper\\MapProfile.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.Service\\AutoMapper\\MapProfile.cs",
               "ToolTip": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\AutoMapper\\MapProfile.cs",
               "RelativeToolTip": "MS.AuthServer.Service\\AutoMapper\\MapProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T08:17:55.99Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T08:17:55.99Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Service\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.Service\\Services\\UserService.cs",
@@ -71,25 +70,24 @@
               "RelativeToolTip": "MS.AuthServer.Service\\Services\\UserService.cs",
               "ViewState": "AgIAAK8AAAAAAAAAAAAqwKgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T08:16:06.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T08:16:06.31Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UpdateUserDto.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Core\\DTOs\\UpdateUserDto.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.Core\\DTOs\\UpdateUserDto.cs",
               "ToolTip": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Core\\DTOs\\UpdateUserDto.cs",
               "RelativeToolTip": "MS.AuthServer.Core\\DTOs\\UpdateUserDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA1wA4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-02T08:14:54.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MS.AuthServer.API\\Controllers\\UserController.cs",
@@ -110,8 +108,7 @@
               "RelativeToolTip": "MS.AuthServer.Core\\Services\\IUserService.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAQwBEAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T19:48:39.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T19:48:39.722Z"
             },
             {
               "$type": "Document",

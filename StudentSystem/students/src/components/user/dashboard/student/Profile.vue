@@ -12,102 +12,106 @@
                 <v-avatar class="mb-4" size="120" color="grey-lighten-1">
                     <v-icon size="64" color="white">mdi-account</v-icon>
                 </v-avatar>
-                <v-card-title class="text-h5 mb-4">{{ userProfile.name }} {{ userProfile.surname }}</v-card-title>
+                <v-card-title class="text-h5 mb-4 d-flex align-center">
+                    {{ userProfile.name }} {{ userProfile.surname }}
+                    <v-btn icon="mdi-pencil" size="small" variant="text" @click="toggleEdit" class="ms-2">
+                    </v-btn>
+                </v-card-title>
             </v-card-item>
+
             <v-divider></v-divider>
+
             <v-card-text>
-                <v-container>
-                    <v-row>
-                        <v-col cols="12" md="6">
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-account</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Kullanıcı Adı</div>
-                                    <div class="text-body-1">{{ userProfile.userName }}</div>
-                                </div>
-                            </div>
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-email</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Email</div>
-                                    <div class="text-body-1">{{ userProfile.email }}</div>
-                                </div>
-                            </div>
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-map-marker</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Şehir</div>
-                                    <div class="text-body-1">{{ userProfile.city || '-' }}</div>
-                                </div>
-                            </div>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-phone</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Telefon</div>
-                                    <div class="text-body-1">{{ userProfile.phoneNumber || '-' }}</div>
-                                </div>
-                            </div>
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-calendar</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Doğum Tarihi</div>
-                                    <div class="text-body-1">{{ formatDate(userProfile.birthDate) }}</div>
-                                </div>
-                            </div>
-                            <div class="profile-item">
-                                <v-icon color="primary" class="me-2">mdi-gender-male-female</v-icon>
-                                <div class="profile-detail">
-                                    <div class="text-caption">Cinsiyet</div>
-                                    <div class="text-body-1">{{ formatGender(userProfile.gender) }}</div>
-                                </div>
-                            </div>
-                        </v-col>
-                    </v-row>
-                </v-container>
+                <v-form v-model="isValid" @submit.prevent="handleSubmit">
+                    <v-container>
+                        <v-row>
+                            <v-col cols="12" md="6">
+                                <v-text-field
+                                    v-model="editedProfile.userName"
+                                    label="Kullanıcı Adı"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="editedProfile.name"
+                                    label="Ad"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="editedProfile.surname"
+                                    label="Soyad"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="editedProfile.email"
+                                    label="Email"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                    type="email"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="6">
+                                <v-text-field
+                                    v-model="editedProfile.phoneNumber"
+                                    label="Telefon"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="editedProfile.city"
+                                    label="Şehir"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="editedProfile.tckn"
+                                    label="TCKN"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-text-field>
+                                <v-select
+                                    v-model="editedProfile.gender"
+                                    :items="genderOptions"
+                                    label="Cinsiyet"
+                                    :readonly="!isEditing"
+                                    variant="outlined"
+                                    density="comfortable"
+                                ></v-select>
+                            </v-col>
+                        </v-row>
+
+                        <v-row v-if="isEditing">
+                            <v-col class="text-center">
+                                <v-btn
+                                    color="primary"
+                                    class="me-4"
+                                    type="submit"
+                                    :loading="updating"
+                                    :disabled="!isValid"
+                                >
+                                    Güncelle
+                                </v-btn>
+                                <v-btn @click="cancelEdit">
+                                    İptal
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </v-form>
             </v-card-text>
         </v-card>
     </div>
 </template>
 
-<style scoped>
-.profile-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.profile-card {
-    border-radius: 16px;
-    text-align: center;
-}
-
-.profile-item {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    border-radius: 8px;
-    background-color: #f5f5f5;
-    margin-bottom: 16px;
-    transition: all 0.3s ease;
-}
-
-.profile-item:hover {
-    background-color: #e3f2fd;
-    transform: translateY(-2px);
-}
-
-.profile-detail {
-    flex: 1;
-    text-align: left;
-}
-
-.error-alert {
-    max-width: 500px;
-    margin: 0 auto;
-}
-</style>
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/stores/user'
@@ -117,30 +121,51 @@ const userStore = useUserStore()
 const loading = ref(true)
 const error = ref(null)
 const userProfile = ref(null)
+const isEditing = ref(false)
+const isValid = ref(true)
+const updating = ref(false)
+const editedProfile = ref({})
 
-const formatDate = (date) => {
-    if (!date || date === '0001-01-01T00:00:00') return '-'
-    return new Date(date).toLocaleDateString('tr-TR')
+const genderOptions = [
+    { title: 'Belirtilmemiş', value: 0 },
+    { title: 'Erkek', value: 1 },
+    { title: 'Kadın', value: 2 }
+]
+
+const toggleEdit = () => {
+    if (!isEditing.value) {
+        editedProfile.value = { ...userProfile.value }
+    }
+    isEditing.value = !isEditing.value
 }
 
-const formatGender = (gender) => {
-    switch (gender) {
-        case 0: return 'Belirtilmemiş'
-        case 1: return 'Erkek'
-        case 2: return 'Kadın'
-        default: return '-'
+const cancelEdit = () => {
+    isEditing.value = false
+    editedProfile.value = { ...userProfile.value }
+}
+
+const handleSubmit = async () => {
+    if (!isValid.value) return
+
+    updating.value = true
+    try {
+        await userService.updateUser(editedProfile.value)
+        userProfile.value = { ...editedProfile.value }
+        isEditing.value = false
+    } catch (err) {
+        error.value = 'Profil güncellenirken bir hata oluştu'
+        console.error('Update error:', err)
+    } finally {
+        updating.value = false
     }
 }
 
 const fetchUserProfile = async () => {
     try {
-        const userId = userStore.userId
-        // ID'yi array içinde gönder
-        const response = await userService.getUsersByIds([userId])
+        const response = await userService.getUsersByIds()
         if (response.data && response.data.length > 0) {
             userProfile.value = response.data[0]
-        } else {
-            error.value = 'Kullanıcı bilgileri bulunamadı'
+            editedProfile.value = { ...response.data[0] }
         }
     } catch (err) {
         error.value = 'Profil bilgileri yüklenemedi'
@@ -155,3 +180,19 @@ onMounted(() => {
 })
 </script>
 
+<style scoped>
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-card {
+    border-radius: 16px;
+}
+
+.error-alert {
+    max-width: 500px;
+    margin: 0 auto;
+}
+</style>
