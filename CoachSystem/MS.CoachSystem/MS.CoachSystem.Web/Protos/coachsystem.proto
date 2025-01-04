@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "MS.CoachSystem.Web.Protos";
+
+package coachsystem;
+
+// Analytics service definition
+service CoachSystem {
+    rpc GetCoachAnalytics (AnalyticsRequest) returns (AnalyticsResponse);
+}
+
+// Analytics request message
+message AnalyticsRequest {
+    string coachId = 1;
+    string startDate = 2;
+    string endDate = 3;
+}
+
+// Analytics response message
+message AnalyticsResponse {
+    int32 totalStudents = 1;
+    int32 totalTargets = 2;
+    int32 totalMeetings = 3;
+    int32 completedTargets = 4;
+    int32 pendingTargets = 5;
+}

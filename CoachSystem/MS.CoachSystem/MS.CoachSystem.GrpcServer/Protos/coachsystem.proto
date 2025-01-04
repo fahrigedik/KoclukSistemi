@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "MS.CoachSystem.GrpcServer";
+
+package coachsystem;
+
+service CoachSystem {
+    rpc GetCoachAnalytics (AnalyticsRequest) returns (AnalyticsResponse);
+}
+
+message AnalyticsRequest {
+    string coachId = 1;
+    string startDate = 2;
+    string endDate = 3;
+}
+
+message AnalyticsResponse {
+    int32 totalStudents = 1;
+    int32 totalTargets = 2;
+    int32 totalMeetings = 3;
+    int32 completedTargets = 4;
+    int32 pendingTargets = 5;
+}
