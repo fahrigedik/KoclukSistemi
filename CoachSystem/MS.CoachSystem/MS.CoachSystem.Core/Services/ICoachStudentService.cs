@@ -9,4 +9,6 @@ public interface ICoachStudentService : IGenericService<CoachStudent, CoachStude
     Task<GenericResponse<string>> GetEntityIdByCoachIdAndStudentId(string coachId, string studentId);
 
     Task<GenericResponse<List<string>>> GetCoachIdByStudentIdAsync(string studentId);
+
+    Task<int> GetCountByCoachId(string coachId);
 }

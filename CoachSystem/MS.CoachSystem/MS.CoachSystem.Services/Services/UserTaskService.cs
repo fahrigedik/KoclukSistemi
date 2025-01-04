@@ -67,4 +67,14 @@ public class UserTaskService : GenericService<UserTask, UserTaskDto>, IUserTaskS
         }
         return GenericResponse<UserTaskDto>.Success(userTask, HttpStatusCode.OK);
     }
+
+    public async Task<int> GetCountByCoachId(string coachId)
+    {
+        var userTasks = await repository.Where(x => x.CoachID == coachId).ToListAsync();
+        if (userTasks is null)
+        {
+            return 0;
+        }
+        return userTasks.Count();
+    }
 }

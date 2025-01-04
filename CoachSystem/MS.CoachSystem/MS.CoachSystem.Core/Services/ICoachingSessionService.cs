@@ -6,5 +6,7 @@ namespace MS.CoachSystem.Core.Services;
 public interface ICoachingSessionService : IGenericService<CoachingSession, CoachingSessionDto>
 {
     Task<GenericResponse<List<CoachingSession>>> GetCoachingSessionByStudentIdAsync(CoachingSessionRequestDto requestDto);
+
+    Task<int> GetCountByCoachId(string coachId);
 }
 

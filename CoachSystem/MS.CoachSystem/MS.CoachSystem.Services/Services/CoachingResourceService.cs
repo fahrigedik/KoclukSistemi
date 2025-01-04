@@ -150,4 +150,10 @@ public class CoachingResourceService : GenericService<CoachingResource, Coaching
             await unitOfWork.SaveChangesAsync();
         }
     }
+
+    public async Task<int> GetCountByCoachId(string coachId)
+    {
+        var resources = await repository.Where(x => x.CoachID == coachId).ToListAsync();
+        return resources.Count;
+    }
 }

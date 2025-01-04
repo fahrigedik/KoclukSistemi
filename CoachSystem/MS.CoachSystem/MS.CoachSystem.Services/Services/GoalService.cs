@@ -89,4 +89,14 @@ public class GoalService : GenericService<Goal, GoalDto>, IGoalService
 
         return GenericResponse<GoalDto>.Success(goalDto, HttpStatusCode.OK);
     }
+
+    public async Task<int> GetCountByCoachId(string coachId)
+    {
+        var goals = await repository.Where(x => x.CoachID == coachId).ToListAsync();
+        if (goals is null)
+        {
+            return 0;
+        }
+        return goals.Count();
+    }
 }

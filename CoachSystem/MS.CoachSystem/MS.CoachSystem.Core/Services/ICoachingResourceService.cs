@@ -14,4 +14,6 @@ public interface ICoachingResourceService : IGenericService<CoachingResource, Co
     Task<GenericResponse<CreateCoachingResourceWithTagsDto>> UpdateResourceWithTagsAsync(CreateCoachingResourceWithTagsDto resourceDto, List<int> tagIds, int resourceId);
 
     Task DeleteAsync(int id);
+
+    Task<int> GetCountByCoachId(string coachId);
 }

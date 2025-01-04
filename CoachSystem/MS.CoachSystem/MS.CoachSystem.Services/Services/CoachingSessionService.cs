@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MS.CoachSystem.Core.DTOs;
 using MS.CoachSystem.Core.DTOs.CoachingSessionDtos;
 using MS.CoachSystem.Core.Repositories;
@@ -30,5 +31,15 @@ public class CoachingSessionService : GenericService<CoachingSession, CoachingSe
         }
 
         return GenericResponse<List<CoachingSession>>.Success(coachingSessions.ToList(), HttpStatusCode.OK);
+    }
+
+    public async Task<int> GetCountByCoachId(string coachId)
+    {
+        var coachingSessions = await repository.Where(x => x.CoachId == coachId).ToListAsync();
+        if (coachingSessions is null)
+        {
+            return 0;
+        }
+        return coachingSessions.Count();
     }
 }

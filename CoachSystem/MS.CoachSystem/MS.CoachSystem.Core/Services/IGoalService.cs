@@ -10,5 +10,7 @@ public interface IGoalService : IGenericService<Goal, GoalDto>
 
     Task<GenericResponse<GoalDto>> MarkGoalAsWorkingAsync(GoalDto goalDto);
 
+    Task<int> GetCountByCoachId(string coachId);
+
 }
 
