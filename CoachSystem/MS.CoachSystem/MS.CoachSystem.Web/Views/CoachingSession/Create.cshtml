@@ -6,48 +6,86 @@
 }
 
 <div class="container mt-4">
-    <h2>Yeni Görüşme Ekle</h2>
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Yeni Görüşme Ekle</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <input type="hidden" value=""/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionTopic" class="form-label">Görüşme Konusu</label>
+                            <input asp-for="SessionTopic" class="form-control" placeholder="Görüşme konusunu giriniz"/>
+                            <span asp-validation-for="SessionTopic" class="text-danger"></span>
+                        </div>
 
-    <form asp-action="Create" method="post" class="form-horizontal">
-        <input type="hidden" value=""/>
-        <div class="form-group">
-            <label asp-for="SessionTopic" class="control-label"></label>
-            <input asp-for="SessionTopic" class="form-control"/>
-            <span asp-validation-for="SessionTopic" class="text-danger"></span>
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionLocation" class="form-label">Görüşme Yeri</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                <input asp-for="SessionLocation" class="form-control" placeholder="Görüşme yerini giriniz"/>
+                            </div>
+                            <span asp-validation-for="SessionLocation" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionDate" class="form-label">Görüşme Tarihi</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <input asp-for="SessionDate" class="form-control" type="date"/>
+                            </div>
+                            <span asp-validation-for="SessionDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionTime" class="form-label">Görüşme Saati</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <input asp-for="SessionTime" class="form-control" type="time"/>
+                            </div>
+                            <span asp-validation-for="SessionTime" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionStatus" class="form-label">Görüşme Durumu</label>
+                            <select asp-for="SessionStatus" class="form-select">
+                                <option value="">Seçiniz...</option>
+                                <option value="Planned">Planlandı</option>
+                                <option value="Completed">Tamamlandı</option>
+                                <option value="Cancelled">İptal Edildi</option>
+                            </select>
+                            <span asp-validation-for="SessionStatus" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group mb-3">
+                            <label asp-for="SessionNotes" class="form-label">Görüşme Notları</label>
+                            <textarea asp-for="SessionNotes" class="form-control" rows="4" 
+                                    placeholder="Görüşme notlarını giriniz"></textarea>
+                            <span asp-validation-for="SessionNotes" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-end mt-4">
+                    <a asp-action="Index" class="btn btn-secondary me-2">
+                        <i class="fas fa-arrow-left"></i> İptal
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Kaydet
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label asp-for="SessionNotes" class="control-label"></label>
-            <textarea asp-for="SessionNotes" class="form-control"></textarea>
-            <span asp-validation-for="SessionNotes" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SessionLocation" class="control-label"></label>
-            <input asp-for="SessionLocation" class="form-control"/>
-            <span asp-validation-for="SessionLocation" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SessionDate" class="control-label"></label>
-            <input asp-for="SessionDate" class="form-control" type="date"/>
-            <span asp-validation-for="SessionDate" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SessionTime" class="control-label"></label>
-            <input asp-for="SessionTime" class="form-control" type="time"/>
-            <span asp-validation-for="SessionTime" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="SessionStatus" class="control-label"></label>
-            <input asp-for="SessionStatus" class="form-control"/>
-            <span asp-validation-for="SessionStatus" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Görüşme Ekle" class="btn btn-primary"/>
-        </div>
-    </form>
+    </div>
 </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 }
-
-
