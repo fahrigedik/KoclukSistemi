@@ -19,7 +19,7 @@ namespace MS.CoachSystem.Web.ViewComponents
             _client = client;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
-        }
+        }   
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
