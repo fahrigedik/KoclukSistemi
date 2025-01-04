@@ -57,7 +57,7 @@ public class UserController : CustomBaseController
     }
 
 
-    [Authorize(Roles = "coa ch")]
+    [Authorize(Roles = "coach")]
     [HttpPost]
     public async Task<IActionResult> RemoveStudentUser(RemoveStudentDto studentDto)
     {

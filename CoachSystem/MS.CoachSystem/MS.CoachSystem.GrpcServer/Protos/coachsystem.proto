@@ -15,9 +15,9 @@ message AnalyticsRequest {
 }
 
 message AnalyticsResponse {
-    int32 totalStudents = 1;
-    int32 totalTargets = 2;
-    int32 totalMeetings = 3;
-    int32 completedTargets = 4;
-    int32 pendingTargets = 5;
+    int32 user_task_count = 1;
+    int32 goal_count = 2;
+    int32 coaching_resource_count = 3;
+    int32 coaching_session_count = 4;
+    int32 coach_student_count = 5;
 }
