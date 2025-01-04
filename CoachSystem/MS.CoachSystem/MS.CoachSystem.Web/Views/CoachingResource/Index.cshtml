@@ -1,62 +1,84 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     Layout = "_StudentManagentLayout";
 }
 @model List<MS.CoachSystem.Core.DTOs.CoachingResourceDtos.CoachingResourceWithDetails>
 
-
-
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center ms-2 mb-3">
-        <h2 class="c-black">Kaynaklar</h2>
-        <a class="btn btn-primary me-3" asp-action="Create" asp-controller="CoachingResource">Kaynak Ekle</a>
-    </div>
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kaynak</th>
-                <th scope="col">Kaynak Açıklaması</th>
-                <th scope="col">Kaynak URL</th>
-                <th scope="col">Kaynak Tipi</th>
-                <th scope="col">Kaynak Etiketleri</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model is null || Model.Count == 0)
-            {
-            }
-            else
-            {
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td></td>
-                        <td>@item.Title</td>
-                        <td>@item.Description</td>
-                        <td>@item.URL</td>
-                        <td>@item.ResourceTypeName</td>
-                        <td>
-                            @foreach (var tag in item.Tags)
+    <div class="card shadow-sm">
+        <div class="card-header bg-white py-3">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-book me-2"></i>Kaynaklar
+                    </h3>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" asp-action="Create" asp-controller="CoachingResource">
+                        <i class="fas fa-plus"></i> Kaynak Ekle
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Kaynak</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Tip</th>
+                            <th scope="col">Etiketler</th>
+                            <th scope="col" colspan="2" class="text-center">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model is null || Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center py-4">
+                                    <i class="fas fa-info-circle me-2"></i>Henüz kaynak eklenmemiş
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
                             {
-                                <span class="badge bg-primary me-1">@tag</span>
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>
+                                        <a href="@item.URL" target="_blank" class="btn btn-link p-0">
+                                            <i class="fas fa-external-link-alt me-1"></i>Link
+                                        </a>
+                                    </td>
+                                    <td><span class="badge bg-secondary">@item.ResourceTypeName</span></td>
+                                    <td>
+                                        @foreach (var tag in item.Tags)
+                                        {
+                                            <span class="badge bg-primary me-1">@tag</span>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-sm btn-info" asp-action="Update" asp-controller="CoachingResource" asp-route-id="@item.Id">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="CoachingResource" asp-route-id="@item.Id">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             }
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-info" asp-action="Update" asp-controller="CoachingResource" asp-route-id="@item.Id">Güncelle</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="CoachingResource" asp-route-id="@item.Id">Sil</a>
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
