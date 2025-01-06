@@ -2,8 +2,11 @@ using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using MS.AuthServer.Web.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MS.AuthServer.Core.Entities;
 using MS.AuthServer.Data;
 using MS.AuthServer.Web.ViewModels;
 using Npgsql;
@@ -15,15 +18,20 @@ namespace MS.AuthServer.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _appDbContext;
-
-        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
+        private readonly UserManager<AppUser> _userManager;
+        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext, UserManager<AppUser> userManager)
         {
             _logger = logger;
             _appDbContext = appDbContext;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return RedirectToAction("Index", "Login");
+
+
             var unverifiedCountParam = new NpgsqlParameter
             {
                 ParameterName = "p_unverified_count",
@@ -105,6 +113,10 @@ namespace MS.AuthServer.Web.Controllers
                 .SqlQuery<UserRolesViewModel>($"SELECT * FROM vw_UserRoles")
                 .ToListAsync();
             return View(userRoles);
+        }
+        public class FunctionResult
+        {
+            public string value { get; set; }
         }
     }
 }
