@@ -59,7 +59,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
             Name = createUserDto.Name,
             Surname = createUserDto.Surname,
             Email = createUserDto.Email,
-            BirthDate = createUserDto.BirthDate,
+            BirthDate = createUserDto.BirthDate.ToUniversalTime(),
             Gender = createUserDto.Gender,
             TCKN = createUserDto.TCKN,
         };
@@ -118,7 +118,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
             Email = createUserDto.Email,
             Name = createUserDto.Name,
             Surname = createUserDto.Surname,
-            BirthDate = createUserDto.BirthDate,
+            BirthDate = createUserDto.BirthDate.ToUniversalTime(),
             TCKN = createUserDto.TCKN,
             Gender = createUserDto.Gender
         };
@@ -179,7 +179,7 @@ public class UserService(UserManager<AppUser> _userManager, IMapper _mapper) : I
         user.Name = updateUserDto.Name;
         user.Surname = updateUserDto.Surname;
         user.PhoneNumber = updateUserDto.PhoneNumber;
-        user.BirthDate = updateUserDto.BirthDate;
+        user.BirthDate = updateUserDto.BirthDate.Value.ToUniversalTime();
         user.TCKN = updateUserDto.TCKN;
         user.Gender = updateUserDto.Gender;
 

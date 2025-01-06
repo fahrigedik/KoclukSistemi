@@ -1,0 +1,6 @@
+@MS.CoachSystem.SOAP_HostAddress = http://localhost:5025
+
+GET {{MS.CoachSystem.SOAP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -55,7 +55,7 @@ public class AuthenticationService : IAuthenticationService
         else
         {
             userRefreshToken.Code = token.RefreshToken;
-            userRefreshToken.Expiration = token.RefreshTokenExpiration;
+            userRefreshToken.Expiration = token.RefreshTokenExpiration.ToUniversalTime();
         }
         await _unitOfWork.SaveChangesAsync();
 
@@ -85,7 +85,7 @@ public class AuthenticationService : IAuthenticationService
         }
 
         existRefreshToken.Code = token.RefreshToken;
-        existRefreshToken.Expiration = token.RefreshTokenExpiration;
+        existRefreshToken.Expiration = token.RefreshTokenExpiration.ToUniversalTime();
 
         await _unitOfWork.SaveChangesAsync();
 

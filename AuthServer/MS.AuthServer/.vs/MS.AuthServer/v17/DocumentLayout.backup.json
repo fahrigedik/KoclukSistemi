@@ -170,8 +170,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAI8AAAAAAAAAAAAAAHoAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T13:00:55.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T13:00:55.79Z"
             },
             {
               "$type": "Document",
@@ -181,7 +180,7 @@
               "RelativeDocumentMoniker": "MS.AuthServer.Web\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\FahriGedikPrivate\\KoclukSistemi\\AuthServer\\MS.AuthServer\\MS.AuthServer.Web\\Controllers\\HomeController.cs",
               "RelativeToolTip": "MS.AuthServer.Web\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAgwEkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAewE0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-05T12:25:18.736Z",
               "EditorCaption": ""
@@ -196,8 +195,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\AllRolesViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T08:21:24.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:21:24.102Z"
             },
             {
               "$type": "Document",
@@ -209,8 +207,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T12:29:25.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T12:29:25.315Z"
             },
             {
               "$type": "Document",
@@ -222,8 +219,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\ExpiredRefreshTokenViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T08:50:32.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:50:32.863Z"
             },
             {
               "$type": "Document",
@@ -235,8 +231,7 @@
               "RelativeToolTip": "MS.AuthServer.Core\\Entities\\UserRefreshToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T09:45:57.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T09:45:57.325Z"
             },
             {
               "$type": "Document",
@@ -248,8 +243,7 @@
               "RelativeToolTip": "MS.AuthServer.Core\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T12:36:51.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T12:36:51.301Z"
             },
             {
               "$type": "Document",
@@ -261,8 +255,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\ExpiredRefreshToken.cshtml",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T08:52:44.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:52:44.775Z"
             },
             {
               "$type": "Document",
@@ -274,8 +267,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\UserRoles.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T08:58:09.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:58:09.73Z"
             },
             {
               "$type": "Document",
@@ -287,8 +279,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\UserRolesViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T08:55:57.021Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:55:57.021Z"
             },
             {
               "$type": "Document",
@@ -300,8 +291,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\EmailVerificationStatus.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T08:42:26.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:42:26.809Z"
             },
             {
               "$type": "Document",
@@ -313,8 +303,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\EmailVerificationStatusViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T08:38:58.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:38:58.57Z"
             },
             {
               "$type": "Document",
@@ -326,8 +315,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\AllUsers.cshtml",
               "ViewState": "AgIAABcAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T08:35:21.025Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:35:21.025Z"
             },
             {
               "$type": "Document",
@@ -339,8 +327,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\AllUsersViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T08:32:48.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:32:48.646Z"
             },
             {
               "$type": "Document",
@@ -352,8 +339,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T12:23:35.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T12:23:35.946Z"
             },
             {
               "$type": "Document",
@@ -365,8 +351,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Views\\Home\\AllRoles.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T08:25:24.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T08:25:24.21Z"
             },
             {
               "$type": "Document",
@@ -378,8 +363,7 @@
               "RelativeToolTip": "MS.AuthServer.Data\\MS.AuthServer.Data.csproj",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-05T11:29:04.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T11:29:04.291Z"
             },
             {
               "$type": "Document",
@@ -391,8 +375,7 @@
               "RelativeToolTip": "MS.AuthServer.Data\\AppDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T11:33:32.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T11:33:32.628Z"
             },
             {
               "$type": "Document",
@@ -404,8 +387,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\Controllers\\LoginController.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T12:22:10.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T12:22:10.389Z"
             },
             {
               "$type": "Document",
@@ -453,8 +435,7 @@
               "RelativeToolTip": "MS.AuthServer.Web\\MS.AuthServer.Web.csproj",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-05T12:17:57.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T12:17:57.445Z"
             },
             {
               "$type": "Document",
@@ -466,8 +447,7 @@
               "RelativeToolTip": "MS.AuthServer.API\\MS.AuthServer.API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-05T11:55:27.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T11:55:27.049Z"
             },
             {
               "$type": "Document",
@@ -491,8 +471,7 @@
               "RelativeToolTip": "MS.AuthServer.Core\\MS.AuthServer.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-05T11:34:14.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T11:34:14.804Z"
             },
             {
               "$type": "Document",
@@ -516,8 +495,7 @@
               "RelativeToolTip": "MS.AuthServer.Service\\MS.AuthServer.Service.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-31T14:26:42.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-31T14:26:42.461Z"
             },
             {
               "$type": "Document",

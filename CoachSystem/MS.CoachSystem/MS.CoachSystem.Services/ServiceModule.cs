@@ -2,6 +2,7 @@
 using MS.CoachSystem.Core.Repositories;
 using MS.CoachSystem.Core.Services;
 using MS.CoachSystem.Repository.Repositories;
+using MS.CoachSystem.Service.Client;
 using MS.CoachSystem.Service.Services;
 
 namespace MS.CoachSystem.Service;
@@ -22,6 +23,7 @@ public class ServiceModule : Module
         builder.RegisterType<UserTaskService>().As<IUserTaskService>().InstancePerLifetimeScope();
 
         builder.RegisterType<StudentService>().InstancePerLifetimeScope();
+        builder.RegisterType<SOAPCoachRegisterClient>().InstancePerLifetimeScope();
         builder.RegisterType<AuthService>().InstancePerLifetimeScope();
     }
 }
