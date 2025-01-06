@@ -1,0 +1,109 @@
+﻿@model IEnumerable<MS.AuthServer.Web.ViewModels.EmailVerificationStatusViewModel>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-envelope-check me-2"></i>
+                        Email Doğrulama İstatistikleri
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Durum</th>
+                                    <th>Kullanıcı Sayısı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var status in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (status.VerificationStatus == "Verified")
+                                            {
+                                                <span class="badge bg-success">Doğrulanmış</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-warning">Beklemede</span>
+                                            }
+                                        </td>
+                                        <td>@status.UserCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-pie-chart me-2"></i>
+                        Doğrulama Dağılımı
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="verificationChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function() {
+            try {
+                const rawData = @Html.Raw(Json.Serialize(Model));
+                const chartData = {
+                    labels: [],
+                    counts: []
+                };
+
+                rawData.forEach(item => {
+                    chartData.labels.push(item.verificationStatus === 'Verified' ? 'Doğrulanmış' : 'Beklemede');
+                    chartData.counts.push(Number(item.userCount));
+                });
+
+                const ctx = document.getElementById('verificationChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: chartData.labels,
+                        datasets: [{
+                            data: chartData.counts,
+                            backgroundColor: ['#198754', '#ffc107'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Chart oluşturulurken hata:', error);
+            }
+        });
+    </script>
+}

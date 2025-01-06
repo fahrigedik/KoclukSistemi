@@ -50,14 +50,14 @@ builder.Services.Configure<List<Client>>(builder.Configuration.GetSection("Clien
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("SqlCon");
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
     if (connectionString is null)
     {
         throw new NullReferenceException("Connection string is null");
     }
 
-    options.UseSqlServer(connectionString, sqlOptions =>
+    options.UseNpgsql(connectionString, sqlOptions =>
     {
         sqlOptions.MigrationsAssembly(typeof(DataAssembly).Assembly.FullName);
     });

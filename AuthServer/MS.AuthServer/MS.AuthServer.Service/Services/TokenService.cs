@@ -54,8 +54,8 @@ public class TokenService : ITokenService
 
     public TokenDto CreateToken(AppUser appUser)
     {
-        var accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
-        var refreshTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.RefreshTokenExpiration);
+        var accessTokenExpiration = DateTime.UtcNow.AddMinutes(_tokenOptions.AccessTokenExpiration);
+        var refreshTokenExpiration = DateTime.UtcNow.AddMinutes(_tokenOptions.RefreshTokenExpiration);
 
         var securityKey = SignInService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
 
@@ -65,7 +65,7 @@ public class TokenService : ITokenService
         JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
             issuer: _tokenOptions.Issuer,
             expires: accessTokenExpiration,
-            notBefore: DateTime.Now,
+            notBefore: DateTime.UtcNow,
             claims: GetClaims(appUser, _tokenOptions.Audiences).Result,
             signingCredentials: signingCredentials
         );
@@ -96,7 +96,7 @@ public class TokenService : ITokenService
 
     public ClientTokenDto CreateClientToken(Client client)
     {
-        var accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+        var accessTokenExpiration = DateTime.UtcNow.AddMinutes(_tokenOptions.AccessTokenExpiration);
         var securityKey = SignInService.GetSymmetricSecurityKey(_tokenOptions.SecurityKey);
 
         SigningCredentials signingCredentials =
@@ -105,7 +105,7 @@ public class TokenService : ITokenService
         JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
             issuer: _tokenOptions.Issuer,
             expires: accessTokenExpiration,
-            notBefore: DateTime.Now,
+            notBefore: DateTime.UtcNow,
             claims: GetClaimsByClient(client),
             signingCredentials: signingCredentials
         );

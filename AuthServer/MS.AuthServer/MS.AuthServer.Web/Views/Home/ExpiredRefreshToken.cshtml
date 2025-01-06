@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MS.AuthServer.Web.ViewModels.ExpiredRefreshTokenViewModel>
+
+<div class="container-fluid mt-4">
+    <div class="card">
+        <div class="card-header bg-warning text-dark">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="bi bi-key-fill me-2"></i>
+                    Süresi Dolmuş Yenileme Tokenları
+                </h5>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="tokenTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Kullanıcı Adı</th>
+                            <th>Email</th>
+                            <th>Token</th>
+                            <th>Son Geçerlilik</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var token in Model)
+                        {
+                            <tr>
+                                <td>@token.UserName</td>
+                                <td>@token.Email</td>
+                                <td>
+                                    <span class="text-truncate d-inline-block" style="max-width: 150px;"
+                                          title="@token.Code">@token.Code</span>
+                                </td>
+                                <td>@token.Expiration?.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>
+                                    @if (token.TokenStatus == "Expired")
+                                    {
+                                        <span class="badge bg-danger">Süresi Dolmuş</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Aktif</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.copy-token').click(function() {
+                const token = $(this).data('token');
+                navigator.clipboard.writeText(token);
+
+                const button = $(this);
+                button.html('<i class="bi bi-check"></i>');
+                setTimeout(() => {
+                    button.html('<i class="bi bi-clipboard"></i>');
+                }, 1000);
+            });
+        });
+    </script>
+}

@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard İstatistikleri</h2>
+
+    <h4 class="mt-4 mb-3">View İstatistikleri</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Tüm Roller</h6>
+                            <h3 class="mb-0">@ViewBag.RolesCount</h3>
+                            <small>vw_AllRoles</small>
+                        </div>
+                        <i class="bi bi-shield-lock fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="AllRoles">Detaylar</a>
+                    <i class="bi bi-arrow-right text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Tüm Kullanıcılar</h6>
+                            <h3 class="mb-0">@ViewBag.UsersCount</h3>
+                            <small>vw_AllUsers</small>
+                        </div>
+                        <i class="bi bi-people-fill fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="AllUsers">Detaylar</a>
+                    <i class="bi bi-arrow-right text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-info text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Email Doğrulama Durumu</h6>
+                            <h3 class="mb-0">@ViewBag.EmailVerificationCount</h3>
+                            <small>vw_EmailVerificationStatus</small>
+                        </div>
+                        <i class="bi bi-envelope-check fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="EmailVerificationStatus">Detaylar</a>
+                    <i class="bi bi-arrow-right text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Süresi Dolmuş Tokenlar</h6>
+                            <h3 class="mb-0">@ViewBag.ExpiredTokensCount</h3>
+                            <small>vw_ExpiredRefreshTokens</small>
+                        </div>
+                        <i class="bi bi-key-fill fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="ExpiredRefreshToken">Detaylar</a>
+                    <i class="bi bi-arrow-right text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Kullanıcı Rolleri</h6>
+                            <h3 class="mb-0">@ViewBag.UserRolesCount</h3>
+                            <small>vw_UserRoles</small>
+                        </div>
+                        <i class="bi bi-person-badge fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="UserRoles">Detaylar</a>
+                    <i class="bi bi-arrow-right text-white"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h4 class="mt-4 mb-3">Stored Procedure İstatistikleri</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-white">Doğrulanmamış Kullanıcılar</h6>
+                            <h3 class="mb-0">@ViewBag.UnverifiedUsersCount</h3>
+                            <small>sp_GetUnverifiedUsers</small>
+                        </div>
+                        <i class="bi bi-envelope-exclamation fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-white">Kilitli Hesaplar</h6>
+                        <h3 class="mb-0">@ViewBag.LockedUsersCount</h3>
+                        <small>sp_GetLockedUsersCount</small>
+                    </div>
+                    <i class="bi bi-lock-fill fs-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
