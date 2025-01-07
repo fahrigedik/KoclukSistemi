@@ -10,7 +10,6 @@ public class GoalConfiguration : IEntityTypeConfiguration<Goal>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.GoalTitle).IsRequired().HasMaxLength(128);
         builder.Property(x => x.GoalDescription).IsRequired().HasMaxLength(512);
-        builder.Property(x => x.GoalTypeId).IsRequired();
         builder.Property(x => x.Status).IsRequired();
 
         builder.HasOne(x => x.GoalType)

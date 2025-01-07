@@ -88,7 +88,15 @@ namespace MS.CoachSystem.Web.Controllers
                 // SOAP servisine istek gönderme
                 string result = await SOAPCoachRegisterClient.CallSoapWebService(SoapEndpoint, soapXml);
 
-                // Yanıtı döndürme (HTML sayfasında gösterme)
+                ViewBag.UserName = createCoachViewModel.UserName;  // Kullanıcı adını gösterme
+                ViewBag.Email = createCoachViewModel.Email;  // E-postayı gösterme
+                ViewBag.Name = createCoachViewModel.Name;  // Adı gösterme
+                ViewBag.Surname = createCoachViewModel.Surname;  // Soyadı gösterme
+                ViewBag.City = createCoachViewModel.City;  // Şehri gösterme
+                ViewBag.BirthDate = createCoachViewModel.BirthDate;  // Doğum tarihini gösterme
+                ViewBag.TCKN = createCoachViewModel.TCKN;  // TCKN'yi göstermei
+
+                return RedirectToAction("WelcomeUser", "Account");
                 return Content(result, "text/xml");  // Yanıtın doğru XML formatında olduğunu doğrulamak için
             }
             catch (Exception ex)
@@ -97,6 +105,18 @@ namespace MS.CoachSystem.Web.Controllers
                 return Content($"SOAP request failed: {ex.Message}", "text/plain");
             }
 
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            HttpContext.Response.Cookies.Delete("AccessToken");
+            return RedirectToAction("Login", "Account");
+        }
+
+
+        public async Task<IActionResult> WelcomeUser()
+        {
+            return View();
         }
     }
 }

@@ -171,7 +171,7 @@ namespace MS.CoachSystem.Repository.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<int>("GoalTypeId")
+                    b.Property<int?>("GoalTypeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCompleted")
@@ -344,8 +344,7 @@ namespace MS.CoachSystem.Repository.Migrations
                     b.HasOne("MS.CoachSystem.Entity.Entities.GoalType", "GoalType")
                         .WithMany("Goals")
                         .HasForeignKey("GoalTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("GoalType");
                 });

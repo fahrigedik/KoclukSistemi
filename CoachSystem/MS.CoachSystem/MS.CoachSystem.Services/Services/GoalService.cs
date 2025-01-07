@@ -31,6 +31,7 @@ public class GoalService : GenericService<Goal, GoalDto>, IGoalService
             .Include(x => x.GoalType)
             .ToListAsync();
 
+
         var goalDtos = goals.Select(goal => new GoalWithTypeNamesDto
         {
             Id = goal.Id,
@@ -43,8 +44,8 @@ public class GoalService : GenericService<Goal, GoalDto>, IGoalService
             CompletedDate = goal.CompletedDate,
             IsCompleted = goal.IsCompleted,
             IsWorking = goal.IsWorking,
-            GoalTypeId = goal.GoalTypeId,
-            GoalTypeName = goal.GoalType.TypeName,
+            GoalTypeId = goal.GoalTypeId ?? 0, // Use 0 or any other default value
+            GoalTypeName = goal.GoalType?.TypeName ?? string.Empty, // Handle null GoalType
             CreationDate = goal.CreationDate,
             ModificationDate = goal.ModificationDate
         }).ToList();

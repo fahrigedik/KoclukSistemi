@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MS.CoachSystem.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241231142843_mig1")]
+    [Migration("20250107014843_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -174,7 +174,7 @@ namespace MS.CoachSystem.Repository.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<int>("GoalTypeId")
+                    b.Property<int?>("GoalTypeId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCompleted")
@@ -303,6 +303,12 @@ namespace MS.CoachSystem.Repository.Migrations
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsWorking")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("datetime2");
 
@@ -341,8 +347,7 @@ namespace MS.CoachSystem.Repository.Migrations
                     b.HasOne("MS.CoachSystem.Entity.Entities.GoalType", "GoalType")
                         .WithMany("Goals")
                         .HasForeignKey("GoalTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("GoalType");
                 });

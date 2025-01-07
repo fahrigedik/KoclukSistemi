@@ -12,6 +12,7 @@ public class GoalTypeConfiguration : IEntityTypeConfiguration<GoalType>
 
         builder.HasMany(x => x.Goals)
             .WithOne(x => x.GoalType)
-            .HasForeignKey(x => x.GoalTypeId);
+            .HasForeignKey(x => x.GoalTypeId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Ayarlar";
+}
+
+<div class="container-fluid py-4">
+    <div class="row g-4">
+        <!-- Hedef Tipi Kartı -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-4 text-primary mb-3">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h5 class="card-title">Hedef Tipleri</h5>
+                    <p class="card-text text-muted">Hedef tiplerini görüntüle ve yönet</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-cog me-2"></i>Yönet
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <small class="text-muted">Toplam: <span class="fw-bold">@ViewBag.GoalTypeCount</span></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kaynak Tipi Kartı -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-4 text-success mb-3">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h5 class="card-title">Kaynak Tipleri</h5>
+                    <p class="card-text text-muted">Kaynak tiplerini görüntüle ve yönet</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-success">
+                            <i class="fas fa-cog me-2"></i>Yönet
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <small class="text-muted">Toplam: <span class="fw-bold">@ViewBag.ResourceTypeCount</span></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Etiket Kartı -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-4 text-warning mb-3">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h5 class="card-title">Etiketler</h5>
+                    <p class="card-text text-muted">Kaynak etiketlerini görüntüle ve yönet</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-warning">
+                            <i class="fas fa-cog me-2"></i>Yönet
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <small class="text-muted">Toplam: <span class="fw-bold">@ViewBag.ResourceTagCount</span></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+</style>

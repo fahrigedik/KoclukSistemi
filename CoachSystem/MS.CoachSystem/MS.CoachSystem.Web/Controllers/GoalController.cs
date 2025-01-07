@@ -63,7 +63,7 @@ namespace MS.CoachSystem.Web.Controllers
                     StudentID = model.Goal.StudentID,
                     GoalTitle = model.Goal.GoalTitle,
                     GoalDescription = model.Goal.GoalDescription,
-                    GoalTypeId = model.Goal.GoalTypeId,
+                    GoalTypeId = model.Goal.GoalTypeId ?? default(int),
                     DueDate = model.Goal.DueDate,
                     CompletedDate = model.Goal.CompletedDate,
                     Status = model.Goal.Status,
